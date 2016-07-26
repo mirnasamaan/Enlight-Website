@@ -1,0 +1,20 @@
+﻿ul {
+    list-style-type: none;
+}
+
+.validation-summary-errors ul {
+    padding: 0;
+}
+
+.g-recaptcha > div > div {
+    margin: 0 auto;
+}
+
+.g-recaptcha {
+    display: inline-block;
+}
+
+.pages-table {
+    max-height: 391px;
+    overflow: scroll;
+}
