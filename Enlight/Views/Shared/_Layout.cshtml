@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/progress-bar.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/flexslider.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/bselect.min.css" rel="stylesheet" />
+    <link href="~/Content/css/style.css" rel="stylesheet" type="text/css" />
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+    <nav class="sticky no-display navbar navbar-default">
+        <div class="container">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/"><img class="logo" src="~/Content/images/logo.png" href="/" /></a>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="javascript:void(0)" onclick="home(this)" id="home-link">Home</a></li>
+                    <li><a href="javascript:void(0)" onclick="services(this)" id="services-link">Services</a></li>
+                    <li><a href="javascript:void(0)" onclick="stream(this)" id="stream-link">Stream</a></li>
+                    <li><a href="javascript:void(0)" onclick="clients(this)" id="clients-link">Clients</a></li>
+                    <li><a href="javascript:void(0)" onclick="team(this)" id="team-link">Team</a></li>
+                    <li><a href="javascript:void(0)" onclick="contact(this)" id="contact-link">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <nav class="main-header navbar navbar-default">
+        <div class="container">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse1" aria-expanded="false">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/"><img class="logo" src="~/Content/images/logo.png" href="/" /></a>
+                </div>
+            </div>
+            <div class="navbar-collapse collapse" id="bs-example-navbar-collapse1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="javascript:void(0)" onclick="home(this)" id="home-link">Home</a></li>
+                    <li><a href="javascript:void(0)" onclick="services(this)" id="services-link">Services</a></li>
+                    <li><a href="javascript:void(0)" onclick="stream(this)" id="stream-link">Stream</a></li>
+                    <li><a href="javascript:void(0)" onclick="clients(this)" id="clients-link">Clients</a></li>
+                    <li><a href="javascript:void(0)" onclick="team(this)" id="team-link">Team</a></li>
+                    <li><a href="javascript:void(0)" onclick="contact(this)" id="contact-link">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="body-content">
+        @RenderBody()
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p class="pull-left visible-md visible-lg">EMAIL US AT INFO@ENLIGHTWORLD.COM OR CALL US ON 19991</p>
+                        <p class="pull-right visible-md visible-lg">COPYRIGHT ENLIGHT ADVISORY 2016, ALL RIGHTS RESERVED</p>
+                        <p class="hidden-md hidden-lg">EMAIL US AT INFO@ENLIGHTWORLD.COM OR CALL US ON 19991</p>
+                        <p class="hidden-md hidden-lg">COPYRIGHT ENLIGHT ADVISORY 2016, ALL RIGHTS RESERVED</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.flexslider-min.js"></script>
+    <script src="~/scripts/bselect.min.js"></script>
+    @RenderSection("Scripts")
+    <script>
+        var sticky_header_height;
+        //---------- Navigation links animation ----------//
+        function home () {
+            $('body,html').animate({
+                scrollTop: 0
+            }, 1000);
+            $("#home-link").addClass("active");
+            return false;
+        }
+        function services(e) {
+            $('body,html').animate({
+                scrollTop: $('#services').offset().top + (-sticky_header_height)
+            }, 1000);
+            $("#services-link").addClass("active");
+            return false;
+        }
+        function stream() {
+            $('body,html').animate({
+                scrollTop: $('#stream').offset().top + (-sticky_header_height)
+            }, 1000);
+            $("#stream-link").addClass("active");
+            return false;
+        }
+        function clients() {
+            $('body,html').animate({
+                scrollTop: $('#clients').offset().top + (-sticky_header_height)
+            }, 1000);
+            $("#clients-link").addClass("active");
+            return false;
+        }
+        function team() {
+            $('body,html').animate({
+                scrollTop: $('#team').offset().top + (-sticky_header_height)
+            }, 1000);
+            $("#team-link").addClass("active");
+            return false;
+        }
+        function contact() {
+            $('body,html').animate({
+                scrollTop: $('#contact').offset().top + (-sticky_header_height)
+            }, 1000);
+            $("#contact-link").addClass("active");
+            return false;
+        }
+
+        $(document).ready(function () {
+
+            //--------- Gatting and setting sections height according to screen size ----------//
+            $(".banner").css("height", $(window).height());
+            var main_banner_height = $(".banner").height();
+            sticky_header_height = $(".sticky").height();
+            var counted = false;
+
+            //---------- change top banne height when resizing the window ----------//
+            $(window).resize(function () {
+                $(".banner").css("height", $(window).height());
+                main_banner_height = $(".banner").height();
+                sticky_header_height = $(".sticky").height();
+            })
+
+            //---------- Scroll to content of page when clicking on the down arrow in the homepage slider -----------//
+            $('.down-arrow').click(function () {
+                $('body,html').animate({
+                    scrollTop: $('#page-content').offset().top + (-sticky_header_height)
+                }, 1000);
+                return false;
+            });
+
+            $(window).scroll(function () {
+                //---------- Switching between main and sticky headers according to the window's scroll value ----------//
+                if ($(this).scrollTop() > main_banner_height - sticky_header_height - 10) {
+                    $(".sticky").fadeIn("fast");
+                }
+                else {
+                    $(".sticky").fadeOut("fast");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
