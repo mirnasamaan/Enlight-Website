@@ -8,7 +8,7 @@
         <div>We are Enlight Agency</div>
         <div>We specialize in web design & development</div>
     </div>
-    <div class="down-arrow">
+    <div class="down-arrow bounce">
         <img src="~/Content/images/down-arrow.png" />
     </div>
 </div>
@@ -206,7 +206,7 @@
 </div>
 
 <div class="modal fade" id="quoteModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog container full-width" role="document">
+    <div class="modal-dialog container modal-lg" role="document">
         <div class="modal-content">
             <form>
                 <div class="modal-header row">
@@ -251,8 +251,8 @@
                     </div>
                     <div class="clear"></div>
                     <div>
-                        <div class="col-xs-12 col-md-4 col-lg-3 pull-left">
-                            <p class="">How did you know about us?</p>
+                        <div class="col-xs-12 col-lg-4 pull-left">
+                            <p>How did you know about us?</p>
                         </div>
                         <div class="col-xs-12 col-md-4">
                             <select>
@@ -278,8 +278,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer row">
                 </div>
             </form>
         </div>
@@ -314,27 +312,27 @@
                         number: $(this).text(),
                         numberStep: comma_separator_number_step
                     });
-                }, 1500);
+                }, 30000);
             }
 
             //---------- Add active class when scrolling over divs ----------//
             if ($('#services').visible()) {
-                $('.nav > li a').removeClass("active");
+                $('.nav > li').removeClass("active");
                 $('#services-link').addClass("active");
             } else if ($('#stream').visible()) {
-                $('.nav > li a').removeClass("active");
+                $('.nav > li').removeClass("active");
                 $('#stream-link').addClass("active");
             } else if ($('#clients').visible()) {
-                $('.nav > li a').removeClass("active");
+                $('.nav > li').removeClass("active");
                 $('#clients-link').addClass("active");
             } else if ($('#team').visible()) {
-                $('.nav > li a').removeClass("active");
+                $('.nav > li').removeClass("active");
                 $('#team-link').addClass("active");
             } else if ($('#contact').visible()) {
-                $('.nav > li a').removeClass("active");
+                $('.nav > li').removeClass("active");
                 $('#contact-link').addClass("active");
             } else if ($('.banner').visible()) {
-                $('.nav > li a').removeClass("active");
+                $('.nav > li').removeClass("active");
             }
         });
 
