@@ -29,5 +29,6 @@ namespace Data.Context
         public virtual DbSet<Quote> Quotes { get; set; }
         public virtual DbSet<Widget> Widgets { get; set; }
         public virtual DbSet<Client> Clients { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }
