@@ -1,0 +1,80 @@
+﻿<div class="">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Add Widget <small></small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <form ng-submit="add(addform)" name="addform" enctype="multipart/form-data" ng-validate="validationOptions">
+                        <table id="datatable" class="table table-striped table-bordered">
+                            <thead>
+                                <tr style="text-align:left;">
+                                    <th>Attribute</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <label for="name">Name:</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" ng-model="addWidgetForm.name" id="name" name="name" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="title">Title:</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="title" name="title" ng-model="addWidgetForm.title" required />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="subtitle">Subtitle:</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="subtitle" name="subtitle" ng-model="addWidgetForm.subtitle" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="content">Content:</label>
+                                    </td>
+                                    <td>
+                                        <textarea type="text" id="content-submit"></textarea>
+                                        <textarea id="widgetcontent" name="widgetcontent" ng-model="addWidgetForm.widgetcontent" hidden></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="order">Order:</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="order" name="order" ng-model="addWidgetForm.order" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr style="text-align:left;">
+                                    <th>Attribute</th>
+                                    <th>Value</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <input type="submit" value="submit" class="btn btn-success">
+                    </form>
+                    <a href="/Page" class="btn btn-primary">Back to list</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

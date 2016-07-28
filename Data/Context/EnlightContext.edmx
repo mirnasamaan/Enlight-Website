@@ -51,11 +51,11 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="100" />
-          <Property Name="WidgetOrder" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="WidgetOrder" Type="int" />
           <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="SubTitle" Type="nvarchar" MaxLength="100" />
-          <Property Name="WidgetContent" Type="nvarchar(max)" />
+          <Property Name="WidgetContent" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityContainer Name="EnlightModelStoreContainer">
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
@@ -96,11 +96,11 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="WidgetOrder" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WidgetOrder" Type="Int32" />
           <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SubTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="WidgetContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WidgetContent" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityContainer Name="EnlightEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Contacts" EntityType="Self.Contact" />

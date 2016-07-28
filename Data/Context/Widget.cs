@@ -16,7 +16,7 @@ namespace Data.Context
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int WidgetOrder { get; set; }
+        public Nullable<int> WidgetOrder { get; set; }
         public string Title { get; set; }
         public string SubTitle { get; set; }
         public string WidgetContent { get; set; }

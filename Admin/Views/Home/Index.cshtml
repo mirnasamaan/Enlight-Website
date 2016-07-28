@@ -1,7 +1,135 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@*@ViewBag.Title - Enlight*@</title>
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/custom.min.css" rel="stylesheet" />
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/css/prettify.min.css" rel="stylesheet">
+    <link href="~/Content/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/css/site.css" rel="stylesheet" />
+</head>
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="/" class="site_title"><i class="fa fa-paw"></i> <span>Enlight</span></a>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="profile">
+                        <div class="profile_info">
+                            <span>Welcome,</span>
+                            <h2>@User.Identity.Name</h2>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <br />
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <ul class="nav side-menu">
+                                <li><a href="/"><i class="fa fa-home"></i> Dashboard </a></li>
+                                <li>
+                                    <a><i class="fa fa-user"></i> Admins <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="#">List Admins</a></li>
+                                        <li><a href="#">Add Admin</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-sticky-note"></i> Widgets <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="#">List Widgets</a></li>
+                                        <li><a href="/#/Widget/Add">Add Widget</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-users"></i> Clients <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="#">List Clients</a></li>
+                                        <li><a href="#">Add Client</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-newspaper-o"></i> Contact Forms <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="#">List Contact Forms</a></li>
+                                        <li><a href="#">Add Contact Form</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-bars"></i> Quotes <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="#">List Quotes</a></li>
+                                        <li><a href="#">Add Quote</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav class="" role="navigation">
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    @User.Identity.Name
+                                    <span class="fa fa-angle-down"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                    <li><a href="#"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="right_col" role="main" ng-app="AngularCustomJS">
+                <div ng-view></div>
 
-<h2>Index</h2>
+                @*@RenderBody()*@
+            </div>
+            <footer>
+                <div class="pull-right">
+                    Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+        </div>
+    </div>
 
+    <script src="~/scripts/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular-route.min.js"></script>
+    <script src="~/scripts/angular-validate.js"></script>
+    <script src="~/scripts/modernizr-2.6.2.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <script src="~/scripts/fastclick.js"></script>
+    <script src="~/scripts/nprogress.js"></script>
+    <script src="~/scripts/bootstrap-progressbar.min.js"></script>
+    <script src="~/scripts/icheck.min.js"></script>
+    <script src="~/scripts/moment.min.js"></script>
+    <script src="~/scripts/daterangepicker.js"></script>
+    <script src="~/scripts/jquery.dataTables.min.js"></script>
+    <script src="~/scripts/dataTables.bootstrap.min.js"></script>
+    <script src="~/scripts/dataTables.responsive.min.js"></script>
+    <script src="~/scripts/responsive.bootstrap.js"></script>
+    <script src="~/scripts/additional-methods.min.js"></script>
+    <script src="~/scripts/bootstrap-wysiwyg.min.js"></script>
+    <script src="~/scripts/jquery.hotkeys.js"></script>
+    <script src="~/scripts/prettify.min.js"></script>
+    <script src="~/scripts/custom.js"></script>
+    <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
+    @Scripts.Render("~/bundles/AngularCustomJS")
+</body>
+</html>
