@@ -23,7 +23,8 @@ namespace Admin.Models.Widget
             this.Title = model.Title;
             this.SubTitle = model.SubTitle;
             this.Content = model.WidgetContent;
-            this.Order = model.WidgetOrder;
+            if(model.WidgetOrder != null)
+                this.Order = model.WidgetOrder.Value;
         }
 
         public Data.Context.Widget toModel()
