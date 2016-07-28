@@ -55,6 +55,7 @@
           <Property Name="WidgetOrder" Type="int" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="SubTitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="WidgetContent" Type="nvarchar(max)" />
         </EntityType>
         <EntityContainer Name="EnlightModelStoreContainer">
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
@@ -99,6 +100,7 @@
           <Property Name="WidgetOrder" Type="Int32" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SubTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WidgetContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityContainer Name="EnlightEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Contacts" EntityType="Self.Contact" />
@@ -159,6 +161,7 @@
           <EntitySetMapping Name="Widgets">
             <EntityTypeMapping TypeName="EnlightModel.Widget">
               <MappingFragment StoreEntitySet="Widget">
+                <ScalarProperty Name="WidgetContent" ColumnName="WidgetContent" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="WidgetOrder" ColumnName="WidgetOrder" />

@@ -19,5 +19,6 @@ namespace Data.Context
         public int WidgetOrder { get; set; }
         public string Title { get; set; }
         public string SubTitle { get; set; }
+        public string WidgetContent { get; set; }
     }
 }
