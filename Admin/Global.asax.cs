@@ -7,7 +7,6 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
-using Data.Repositories;
 
 namespace Admin
 {
@@ -29,10 +28,8 @@ namespace Admin
                 var ticket = FormsAuthentication.Decrypt(authCookie.Value);
                 FormsIdentity formsIdentity = new FormsIdentity(ticket);
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(formsIdentity);
-                var repo = new UserRepository();
-                var user = repo.GetUserByEmail(ticket.Name);
                 claimsIdentity.AddClaim(
-                        new Claim(ClaimTypes.Role, user.Role));
+                        new Claim(ClaimTypes.Role, "Admin"));
                 ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
                 HttpContext.Current.User = claimsPrincipal;
             }

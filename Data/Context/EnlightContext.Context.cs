@@ -25,10 +25,10 @@ namespace Data.Context
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Client> Clients { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Quote> Quotes { get; set; }
-        public virtual DbSet<Widget> Widgets { get; set; }
-        public virtual DbSet<Client> Clients { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Widget> Widgets { get; set; }
     }
 }
