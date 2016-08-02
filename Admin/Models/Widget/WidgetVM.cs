@@ -12,7 +12,7 @@ namespace Admin.Models.Widget
         public string Title { get; set; }
         public string SubTitle { get; set; }
         public string Content { get; set; }
-        public int Order { get; set; }
+        public int? Order { get; set; }
 
         public WidgetVM() { }
 
@@ -23,8 +23,7 @@ namespace Admin.Models.Widget
             this.Title = model.Title;
             this.SubTitle = model.SubTitle;
             this.Content = model.WidgetContent;
-            if(model.WidgetOrder != null)
-                this.Order = model.WidgetOrder.Value;
+            this.Order = model.WidgetOrder.Value;
         }
 
         public Data.Context.Widget toModel()

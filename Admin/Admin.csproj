@@ -160,15 +160,22 @@
     <Content Include="Content\css\custom.min.css" />
     <Content Include="Content\css\dataTables.bootstrap.min.css" />
     <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\css\jquery.dataTables.min.css" />
     <Content Include="Content\css\prettify.min.css" />
     <Content Include="Content\css\responsive.bootstrap.min.css" />
     <Content Include="Content\css\scroller.bootstrap.min.css" />
     <Content Include="Content\css\Site.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\images\sort_asc.png" />
+    <Content Include="Content\images\sort_asc_disabled.png" />
+    <Content Include="Content\images\sort_both.png" />
+    <Content Include="Content\images\sort_desc.png" />
+    <Content Include="Content\images\sort_desc_disabled.png" />
+    <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="scripts\additional-methods.min.js" />
-    <Content Include="scripts\ai.0.15.0-build58334.js" />
-    <Content Include="scripts\ai.0.15.0-build58334.min.js" />
+    <Content Include="scripts\angular-datatables.js" />
     <Content Include="scripts\angular-validate.js" />
     <Content Include="scripts\AngularCustomJS.js" />
     <Content Include="scripts\bootstrap-progressbar.min.js" />
@@ -177,7 +184,15 @@
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="Content\fonts\fontawesome-webfont.woff" />
     <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="scripts\controllers\widgetDetailsController.js" />
+    <Content Include="scripts\factories\widgetDetailsFactory.js" />
+    <Content Include="scripts\ServerSideProcessingFactory.js" />
+    <Content Include="scripts\ServerSideProcessingCtrl.js" />
     <Content Include="scripts\controllers\widgetController.js" />
     <Content Include="scripts\custom.js" />
     <Content Include="scripts\dataTables.bootstrap.min.js" />
@@ -212,6 +227,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Widget\WidgetDataItem.cs" />
+    <Compile Include="Models\Widget\WidgetDatatableData.cs" />
     <Compile Include="Models\Widget\WidgetVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -227,6 +244,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Widget\Add.cshtml" />
+    <Content Include="Views\Widget\List.cshtml" />
+    <Content Include="Views\Widget\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
