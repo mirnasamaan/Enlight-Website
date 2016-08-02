@@ -1,353 +1,186 @@
-﻿
-@{
-    ViewBag.Title = "Enlight";
-}
-
-<div class="banner">
-    <div>
-        <div>We are Enlight Agency</div>
-        <div>We specialize in web design & development</div>
-    </div>
-    <div class="down-arrow bounce">
-        <img src="~/Content/images/down-arrow.png" />
-    </div>
-</div>
-
-<div id="page-content">
-    <div id="services" class="services">
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@*@ViewBag.Title*@</title>
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/progress-bar.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/flexslider.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/bselect.min.css" rel="stylesheet" />
+    <link href="~/Content/css/style.css" rel="stylesheet" type="text/css" />
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <nav class="sticky no-display navbar navbar-default">
         <div class="container">
-            <div class="title row">
-                <div class="col-xs-12">
-                    <div></div>
-                    Services
-                    <div></div>
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/"><img class="logo" src="~/Content/images/logo.png" href="/" /></a>
                 </div>
             </div>
-        </div>
-        <div class="content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 col-xs-12 item">
-                        <div class="col-xs-3 no-padding">
-                            <img class="img-responsive" src="~/Content/images/web-design.png" />
-                        </div>
-                        <div class="col-xs-9 data">
-                            <div>Web Design</div>
-                            <div>We design beautiful custom websites that will satisfy your every need</div>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                    <div class="col-md-4 col-xs-12 item">
-                        <div class="col-xs-3 no-padding">
-                            <img class="img-responsive" src="~/Content/images/app.png" />
-                        </div>
-                        <div class="col-xs-9 data">
-                            <div>APP DEVELOPMENT</div>
-                            <div>We develop mobile applications using native programming or cross platform SDKs</div>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                    <div class="col-md-4 col-xs-12 item">
-                        <div class="col-xs-3 no-padding">
-                            <img class="img-responsive" src="~/Content/images/multimedia.png" />
-                        </div>
-                        <div class="col-xs-9 data">
-                            <div>WEB DEVELOPMENT</div>
-                            <div>We develop websites of all scales starting from start-ups to multinational companies</div>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="how-we-work" id="stream">
-        <div class="container">
-            <div class="title row">
-                <div class="col-xs-12">
-                    <div></div>
-                    How we work
-                    <div class="subtitle">Example of work stream</div>
-                    <div></div>
-                </div>
-            </div>
-        </div>
-        <div class="content">
-            <div class="container">
-                <div class="row">
-                    <div class="checkout-wrap">
-                        <ul class="checkout-bar">
-                            <li>PROJECT LAUNCH<div>Approval of proposal and signing the contract to beign work on your project</div></li>
-                            <li>DESIGN PHASE<div>Designing your project using Adobe Photoshop</div></li>
-                            <li>HTML & CSS VERSION<div>Converting the final PSDs design to HTML5 & CSS3, also known as the slicing phase</div></li>
-                            <li>BACKEND DEVELOPMENT<div>Developing the administrator panel of the project to be able to add, modify and delete content at will</div></li>
-                            <li>APPROVAL<div>Approving the project after finishing testing</div></li>
-                            <li>SUPPORT<div>Maintaining and upgrading the project</div></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="stats">
-        <div class="container">
-            <div class="row counter">
-                <div class="col-xs-12 col-md-4 stat-item">
-                    <div><span>102</span></div>
-                    <div>Project Completed</div>
-                </div>
-                <div class="col-xs-12 col-md-4 stat-item">
-                    <div><span>74</span></div>
-                    <div>Happy Clients</div>
-                </div>
-                <div class="col-xs-12 col-md-4 stat-item">
-                    <div><span>3</span></div>
-                    <div>Years Of Service</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container clients" id="clients">
-        <div class="title row">
-            <div class="col-xs-12">
-                <div></div>
-                Our Clients
-                <div></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="flexslider col-xs-12">
-                <ul class="slides">
-                    <li>
-                        <img src="~/Content/images/gb-logo.png" />
-                    </li>
-                    <li>
-                        <img src="~/Content/images/amer-logo.png" />
-                    </li>
-                    <li>
-                        <img src="~/Content/images/coldwell-logo.png" />
-                    </li>
-                    <li>
-                        <img src="~/Content/images/solarize-logo.png" />
-                    </li>
-                    <li>
-                        <img src="~/Content/images/gb-logo.png" />
-                    </li>
-                    <li>
-                        <img src="~/Content/images/amer-logo.png" />
-                    </li>
-                    <li>
-                        <img src="~/Content/images/coldwell-logo.png" />
-                    </li>
-                    <li>
-                        <img src="~/Content/images/solarize-logo.png" />
-                    </li>
-                    <!-- items mirrored twice, total of 12 -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="home-link" onclick="home(this)"><a href="javascript:void(0)">Home</a></li>
+                    <li id="services-link" onclick="services(this)"><a href="javascript:void(0)">Services</a></li>
+                    <li id="stream-link" onclick="stream(this)"><a href="javascript:void(0)">Stream</a></li>
+                    <li id="clients-link" onclick="clients(this)"><a href="javascript:void(0)">Clients</a></li>
+                    <li id="team-link" onclick="team(this)"><a href="javascript:void(0)">Team</a></li>
+                    <li id="contact-link" onclick="contact(this)"><a href="javascript:void(0)">Contact</a></li>
                 </ul>
             </div>
         </div>
-    </div>
-
-    <div class="quote">
+    </nav>
+    <nav class="main-header navbar navbar-default">
         <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="text">Seen Enough? Get a free quote for your project now!</div>
-                    <div class="quote-btn">
-                        <div>
-                            <div>
-                                <button data-toggle="modal" data-target="#quoteModal">Get A Quote</button>
-                            </div>
-                        </div>
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse1" aria-expanded="false">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="/"><img class="logo" src="~/Content/images/logo.png" href="/" /></a>
+                </div>
+            </div>
+            <div class="navbar-collapse collapse" id="bs-example-navbar-collapse1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="home-link" onclick="home(this)"><a href="javascript:void(0)">Home</a></li>
+                    <li id="services-link" onclick="services(this)"><a href="javascript:void(0)">Services</a></li>
+                    <li id="stream-link" onclick="stream(this)"><a href="javascript:void(0)">Stream</a></li>
+                    <li id="clients-link" onclick="clients(this)"><a href="javascript:void(0)">Clients</a></li>
+                    <li id="team-link" onclick="team(this)"><a href="javascript:void(0)">Team</a></li>
+                    <li id="contact-link" onclick="contact(this)"><a href="javascript:void(0)">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="body-content">
+        <div ng-app="AngularCustomJS">
+            <div ng-view></div>
+        </div>
+        @*@RenderBody()*@
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p class="pull-left visible-md visible-lg">EMAIL US AT INFO@ENLIGHTWORLD.COM OR CALL US ON 19991</p>
+                        <p class="pull-right visible-md visible-lg">COPYRIGHT ENLIGHT ADVISORY 2016, ALL RIGHTS RESERVED</p>
+                        <p class="hidden-md hidden-lg">EMAIL US AT INFO@ENLIGHTWORLD.COM OR CALL US ON 19991</p>
+                        <p class="hidden-md hidden-lg">COPYRIGHT ENLIGHT ADVISORY 2016, ALL RIGHTS RESERVED</p>
                     </div>
                 </div>
             </div>
-        </div>
+        </footer>
     </div>
 
-    <div class="container contact" id="contact">
-        <div class="title row">
-            <div class="col-xs-12">
-                <div></div>
-                Contact Us
-                <div class="subtitle">Get in touch</div>
-                <div></div>
-            </div>
-        </div>
-        <div class="row">
-            <form>
-                <div class="col-xs-12 col-md-4">
-                    <input type="text" placeholder="Your Name" />
-                </div>
-                <div class="col-xs-12 col-md-4">
-                    <input type="email" placeholder="Your Email" />
-                </div>
-                <div class="col-xs-12 col-md-4">
-                    <input type="text" placeholder="Your Number" />
-                </div>
-                <div class="col-xs-12 col-md-8">
-                    <textarea placeholder="Your Message"></textarea>
-                </div>
-                <div class="col-xs-12 col-md-4">
-                    <div class="text">
-                        Please make sure your information is written correctly so that we can be able to contact you without any difficulties
-                        <br /><br />
-                        <span>We will contact you as soon as possible!</span>
-                    </div>
-                    <hr>
-                    <input type="submit" value="Send Message" />
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="quoteModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog container modal-lg" role="document">
-        <div class="modal-content">
-            <form>
-                <div class="modal-header row">
-                    <div class="col-xs-12">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <div>
-                            <a href="/"><img class="logo" src="~/Content/images/logo.png" href="/" /></a>
-                            <div>FILL IN THE FIELDS TO GET A QUOTE FOR YOUR REQUESTED WORK</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-body row">
-                    <div class="col-xs-12 col-md-4">
-                        <input type="text" id="name" class="quote-field" placeholder="Name" />
-                    </div>
-                    <div class="col-xs-12 col-md-4">
-                        <input type="email" id="email" class="quote-field" placeholder="Email" />
-                    </div>
-                    <div class="col-xs-12 col-md-4">
-                        <input type="text" id="phone" class="quote-field" placeholder="Phone" />
-                    </div>
-                    <div class="clear"></div>
-                    <div class="col-xs-12 col-md-4">
-                        <select>
-                            <option>Choose a Category</option>
-                            <option>Option 1</option>
-                            <option>Option 2</option>
-                            <option>Option 3</option>
-                        </select>
-                    </div>
-                    <div class="col-xs-12 col-md-4">
-                        <select>
-                            <option>Choose Type</option>
-                            <option>Option 1</option>
-                            <option>Option 2</option>
-                            <option>Option 3</option>
-                        </select>
-                    </div>
-                    <div class="clear"></div>
-                    <div class="col-xs-12">
-                        <textarea id="msg" class="quote-field autoExpand" rows='1' data-min-rows='1' placeholder="Message"></textarea>
-                    </div>
-                    <div class="clear"></div>
-                    <div>
-                        <div class="col-xs-12 col-lg-4 pull-left">
-                            <p>How did you know about us?</p>
-                        </div>
-                        <div class="col-xs-12 col-md-4">
-                            <select>
-                                <option>Recommendation</option>
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                            </select>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                    <div class="clear"></div>
-                    <div class="col-xs-12">
-                        <p>*Please note that the quote sent is an estimate and is subject to change based on the features of the product</p>
-                    </div>
-                    <div class="clear"></div>
-                    <div class="col-xs-12">
-                        <div class="quote-btn">
-                            <div>
-                                <div>
-                                    <input type="submit" value="Send" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-@section Scripts {
-
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular-route.min.js"></script>
+    <script src="~/scripts/angular-validate.js"></script>
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.flexslider-min.js"></script>
+    <script src="~/scripts/bselect.min.js"></script>
     <script src="~/scripts/jquery.animateNumber.min.js"></script>
     <script src="~/scripts/jquery.visible.min.js"></script>
     <script>
-        var counted = false;
+        var sticky_header_height;
+        //---------- Navigation links animation ----------//
+        function home () {
+            $('body,html').animate({
+                scrollTop: 0
+            }, 1000);
+            $('.nav > li').removeClass("active");
+            $("#home-link").addClass("active");
+            return false;
+        }
+        function services(e) {
+            $('body,html').animate({
+                scrollTop: $('#services').offset().top + (-sticky_header_height)
+            }, 1000);
+            $('.nav > li').removeClass("active");
+            $("#services-link").addClass("active");
+            return false;
+        }
+        function stream() {
+            $('body,html').animate({
+                scrollTop: $('#stream').offset().top + (-sticky_header_height)
+            }, 1000);
+            $('.nav > li').removeClass("active");
+            $("#stream-link").addClass("active");
+            return false;
+        }
+        function clients() {
+            $('body,html').animate({
+                scrollTop: $('#clients').offset().top + (-sticky_header_height)
+            }, 1000);
+            $('.nav > li').removeClass("active");
+            $("#clients-link").addClass("active");
+            return false;
+        }
+        function team() {
+            $('body,html').animate({
+                scrollTop: $('#team').offset().top + (-sticky_header_height)
+            }, 1000);
+            $('.nav > li').removeClass("active");
+            $("#team-link").addClass("active");
+            return false;
+        }
+        function contact() {
+            $('body,html').animate({
+                scrollTop: $('#contact').offset().top + (-sticky_header_height)
+            }, 1000);
+            $('.nav > li').removeClass("active");
+            $("#contact-link").addClass("active");
+            return false;
+        }
+
         $(document).ready(function () {
-            $('select').bselect();
-            $('.flexslider').flexslider({
-                animation: "slide",
-                animationLoop: false,
-                itemWidth: 244,
-                itemMargin: 40,
-                minItems: 2,
-                maxItems: 4
+
+            //--------- Gatting and setting sections height according to screen size ----------//
+            $(".banner").css("height", $(window).height());
+            var main_banner_height = $(".banner").height();
+            sticky_header_height = $(".sticky").height();
+            var counted = false;
+
+            //---------- change top banne height when resizing the window ----------//
+            $(window).resize(function () {
+                $(".banner").css("height", $(window).height());
+                main_banner_height = $(".banner").height();
+                sticky_header_height = $(".sticky").height();
+            })
+
+            //---------- Scroll to content of page when clicking on the down arrow in the homepage slider -----------//
+            $('.down-arrow').click(function () {
+                $('body,html').animate({
+                    scrollTop: $('#page-content').offset().top + (-sticky_header_height)
+                }, 1000);
+                return false;
+            });
+
+            $(window).scroll(function () {
+                //---------- Switching between main and sticky headers according to the window's scroll value ----------//
+                if ($(this).scrollTop() > main_banner_height - sticky_header_height - 10) {
+                    $(".sticky").fadeIn("fast");
+                }
+                else {
+                    $(".sticky").fadeOut("fast");
+                }
             });
         });
-
-        $(window).scroll(function () {
-            //---------- Counter numbers animation ---------->
-            if ($('.stats').visible() && counted == false) {
-                counted = true;
-                var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',')
-                $(".counter span").each(function (index) {
-                    $(this).animateNumber({
-                        number: $(this).text(),
-                        numberStep: comma_separator_number_step
-                    });
-                }, 30000);
-            }
-
-            //---------- Add active class when scrolling over divs ----------//
-            if ($('#services').visible()) {
-                $('.nav > li').removeClass("active");
-                $('#services-link').addClass("active");
-            } else if ($('#stream').visible()) {
-                $('.nav > li').removeClass("active");
-                $('#stream-link').addClass("active");
-            } else if ($('#clients').visible()) {
-                $('.nav > li').removeClass("active");
-                $('#clients-link').addClass("active");
-            } else if ($('#team').visible()) {
-                $('.nav > li').removeClass("active");
-                $('#team-link').addClass("active");
-            } else if ($('#contact').visible()) {
-                $('.nav > li').removeClass("active");
-                $('#contact-link').addClass("active");
-            } else if ($('.banner').visible()) {
-                $('.nav > li').removeClass("active");
-            }
-        });
-
-        $(document)
-		.one('focus.textarea', '.autoExpand', function () {
-		    var savedValue = this.value;
-		    this.value = '';
-		    this.baseScrollHeight = this.scrollHeight;
-		    this.value = savedValue;
-		})
-		.on('input.textarea', '.autoExpand', function () {
-		    var minRows = this.getAttribute('data-min-rows') | 0, rows;
-		    this.rows = minRows;
-		    rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 17);
-		    this.rows = minRows + rows;
-		});
     </script>
-}
+</body>
+</html>
