@@ -19,5 +19,6 @@ namespace Data.Context
         public string Password { get; set; }
         public System.DateTime CreationDate { get; set; }
         public string UserToken { get; set; }
+        public Nullable<System.DateTime> LastLoginDate { get; set; }
     }
 }

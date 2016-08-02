@@ -6,3 +6,8 @@ Enlight/obj/
 packages/
 Admin/bin/
 Admin/obj/
+Data/Data.csproj.orig
+Admin/Admin.csproj.orig
+Data/App.Config.orig
+Data/Context/EnlightContext.edmx.orig
+Enlight/Enlight.csproj.user.orig

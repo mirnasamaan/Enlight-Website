@@ -25,15 +25,13 @@ namespace Admin
 
             if (authCookie != null)
             {
-                //var ticket = FormsAuthentication.Decrypt(authCookie.Value);
-                //FormsIdentity formsIdentity = new FormsIdentity(ticket);
-                //ClaimsIdentity claimsIdentity = new ClaimsIdentity(formsIdentity);
-                //var repo = new UserRepositories();
-                //var user = repo.GetUserByEmail(ticket.Name);
-                //claimsIdentity.AddClaim(
-                //        new Claim(ClaimTypes.Role, user.Role));
-                //ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-                //HttpContext.Current.User = claimsPrincipal;
+                var ticket = FormsAuthentication.Decrypt(authCookie.Value);
+                FormsIdentity formsIdentity = new FormsIdentity(ticket);
+                ClaimsIdentity claimsIdentity = new ClaimsIdentity(formsIdentity);
+                claimsIdentity.AddClaim(
+                        new Claim(ClaimTypes.Role, "Admin"));
+                ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+                HttpContext.Current.User = claimsPrincipal;
             }
         }
     }
