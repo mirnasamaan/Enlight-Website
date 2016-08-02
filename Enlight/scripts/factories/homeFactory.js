@@ -1,30 +1,15 @@
-﻿var widgetFactory = function ($http, $q) {
-    return function (name, title, subtitle, widgetcontent, order) {
+﻿var homeFactory = function ($http, $q) {
 
-        var deferredObject = $q.defer();
+    this.getHomeContent = function () {
 
-        $http.post(
-            '/Widget/Add', {
-                Name: name,
-                Title: title,
-                SubTitle: subtitle,
-                Content: widgetcontent,
-                Order: order
-            }
-        ).
-        success(function (data) {
-            if (data == "True") {
-                deferredObject.resolve({ success: true });
-            } else {
-                deferredObject.resolve({ success: false });
-            }
-        }).
-        error(function (data) {
-            deferredObject.resolve({ success: false });
+        return $http.get(
+        '/Home/ListWidgets'
+        ).then(function (response) {
+            return response.data;
         });
 
-        return deferredObject.promise;
     }
+    return this;
 }
 
-widgetFactory.$inject = ['$http', '$q'];
+homeFactory.$inject = ['$http', '$q'];
