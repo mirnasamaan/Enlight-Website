@@ -1,5 +1,4 @@
-﻿@model List<Enlight.Models.WidgetVM>
-@{
+﻿@{
     ViewBag.Title = "Main";
 }
 
@@ -14,7 +13,10 @@
 </div>
 
 <div id="page-content">
-    <div id="services" class="services">
+    <div ng-repeat="x in homeContent">
+        <div ng-bind-html="x.WidgetContent"></div>
+    </div>
+    @*<div id="services" class="services">
         <div class="container">
             <div class="title row">
                 <div class="col-xs-12">
@@ -202,7 +204,7 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div>*@
 </div>
 
 <div class="modal fade" id="quoteModal" tabindex="-1" role="dialog">
@@ -285,65 +287,3 @@
 </div>
 
 
-<script>
-    var counted = false;
-    $(document).ready(function () {
-        $('select').bselect();
-        $('.flexslider').flexslider({
-            animation: "slide",
-            animationLoop: false,
-            itemWidth: 244,
-            itemMargin: 40,
-            minItems: 2,
-            maxItems: 4
-        });
-    });
-
-    $(window).scroll(function () {
-        //---------- Counter numbers animation ---------->
-        if ($('.stats').visible() && counted == false) {
-            counted = true;
-            var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',')
-            $(".counter span").each(function (index) {
-                $(this).animateNumber({
-                    number: $(this).text(),
-                    numberStep: comma_separator_number_step
-                });
-            }, 30000);
-        }
-
-        //---------- Add active class when scrolling over divs ----------//
-        if ($('#services').visible()) {
-            $('.nav > li').removeClass("active");
-            $('#services-link').addClass("active");
-        } else if ($('#stream').visible()) {
-            $('.nav > li').removeClass("active");
-            $('#stream-link').addClass("active");
-        } else if ($('#clients').visible()) {
-            $('.nav > li').removeClass("active");
-            $('#clients-link').addClass("active");
-        } else if ($('#team').visible()) {
-            $('.nav > li').removeClass("active");
-            $('#team-link').addClass("active");
-        } else if ($('#contact').visible()) {
-            $('.nav > li').removeClass("active");
-            $('#contact-link').addClass("active");
-        } else if ($('.banner').visible()) {
-            $('.nav > li').removeClass("active");
-        }
-    });
-
-    $(document)
-	.one('focus.textarea', '.autoExpand', function () {
-		var savedValue = this.value;
-		this.value = '';
-		this.baseScrollHeight = this.scrollHeight;
-		this.value = savedValue;
-	})
-	.on('input.textarea', '.autoExpand', function () {
-		var minRows = this.getAttribute('data-min-rows') | 0, rows;
-		this.rows = minRows;
-		rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 17);
-		this.rows = minRows + rows;
-	});
-</script>

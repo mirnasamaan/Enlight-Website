@@ -25,8 +25,12 @@ namespace Enlight.Controllers
             return View();
         }
 
-
         public ActionResult Main()
+        {
+            return View();
+        }
+
+        public ActionResult ListWidgets()
         {
             List<Widget> allWidgets = _mr.getWidgets();
             List<WidgetVM> allWidgetsVM = new List<WidgetVM>();
@@ -35,7 +39,7 @@ namespace Enlight.Controllers
                 WidgetVM widgetVM = new WidgetVM(widget);
                 allWidgetsVM.Add(widgetVM);
             }
-            return View(allWidgetsVM);
+            return Json(allWidgetsVM, JsonRequestBehavior.AllowGet);
         }
     }
 }
