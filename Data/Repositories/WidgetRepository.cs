@@ -34,6 +34,35 @@ namespace Data.Repositories
             return widget;
         }
 
+        public async Task<Widget> EditWidget(Widget widget)
+        {
+            try
+            {
+                _context.Widgets.Attach(widget);
+                _context.Entry(widget).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+                return widget;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public async Task<bool> DeleteWidget(int id)
+        {
+            try
+            {
+                _context.Widgets.Remove(_context.Widgets.FirstOrDefault(i => i.Id == id));
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
         public IQueryable<Widget> GetFilteredWidgets(ref int recordsTotal, ref int recordFiltered, int start, int length, string search, int sortColumn, string sortDirection)
         {
             IQueryable<Widget> data = _context.Widgets;

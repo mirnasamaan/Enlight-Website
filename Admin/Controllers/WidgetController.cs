@@ -31,11 +31,19 @@ namespace Admin.Controllers
         {
             return View();
         }
-        
+
         public ActionResult Details()
         {
-            string s = Request.QueryString["id"];
-            string s1 = Request.Form["id"];
+            return View();
+        }
+
+        public ActionResult Delete()
+        {
+            return View();
+        }
+
+        public ActionResult Edit()
+        {
             return View();
         }
 
@@ -43,6 +51,20 @@ namespace Admin.Controllers
         public async Task<bool> Add(WidgetVM model)
         {
             Task<Widget> widget = _widRepo.AddWidget(model.toModel());
+            if (widget != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        [HttpPost]
+        public async Task<bool> Edit(WidgetVM model)
+        {
+            Task<Widget> widget = _widRepo.EditWidget(model.toModel());
             if (widget != null)
             {
                 return true;
@@ -88,7 +110,7 @@ namespace Admin.Controllers
             {
                 foreach (var item in data)
                 {
-                    string Actions = "<a class='label label-primary' href='/#/Widget/Details/" + item.Id + "'>Details</a> <a class='label label-primary' href='/#/Widget/Edit?id=" + item.Id + "'>Edit</a> <a class='label label-danger' href='/#/Widget/Delete?id=" + item.Id + "'>Delete</a>";
+                    string Actions = "<a class='label label-primary' href='/#/Widget/Details/" + item.Id + "'>Details</a> <a class='label label-primary' href='/#/Widget/Edit/" + item.Id + "'>Edit</a> <a class='label label-danger' href='/#/Widget/Delete/" + item.Id + "'>Delete</a>";
                     widgets.Add(new WidgetDataItem
                     {
                         ID = item.Id,
@@ -114,6 +136,25 @@ namespace Admin.Controllers
             else
             {
                 return null;
+            }
+        }
+
+        private async Task<bool> DeleteWidget(int id)
+        {
+            return await _widRepo.DeleteWidget(id);
+        }
+
+        [HttpPost]
+        public async Task<bool> ConfirmDelete(int id)
+        {
+            try
+            {
+                await _widRepo.DeleteWidget(id);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
             }
         }
         #endregion

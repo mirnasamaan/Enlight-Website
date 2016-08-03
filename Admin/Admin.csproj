@@ -193,8 +193,11 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="scripts\controllers\widgetEditController.js" />
+    <Content Include="scripts\controllers\widgetDeleteController.js" />
     <Content Include="scripts\controllers\widgetDetailsController.js" />
     <Content Include="scripts\factories\widgetDetailsFactory.js" />
+    <Content Include="scripts\factories\widgetEditFactory.js" />
     <Content Include="scripts\ServerSideProcessingFactory.js" />
     <Content Include="scripts\ServerSideProcessingCtrl.js" />
     <Content Include="scripts\controllers\widgetController.js" />
@@ -255,6 +258,8 @@
     <Content Include="Views\Widget\Add.cshtml" />
     <Content Include="Views\Widget\List.cshtml" />
     <Content Include="Views\Widget\Details.cshtml" />
+    <Content Include="Views\Widget\Delete.cshtml" />
+    <Content Include="Views\Widget\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
