@@ -48,31 +48,23 @@ namespace Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<bool> Add(WidgetVM model)
+        public async Task<ActionResult> Add(WidgetVM model)
         {
-            Task<Widget> widget = _widRepo.AddWidget(model.toModel());
-            if (widget != null)
+            if(!ModelState.IsValid)
             {
-                return true;
+                return View("Add");
             }
             else
             {
-                return false;
+                await _widRepo.AddWidget(model.toModel());
+                return View("List");
             }
         }
 
         [HttpPost]
-        public async Task<bool> Edit(WidgetVM model)
+        public async Task<Widget> Edit(WidgetVM model)
         {
-            Task<Widget> widget = _widRepo.EditWidget(model.toModel());
-            if (widget != null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return await _widRepo.EditWidget(model.toModel());
         }
         #endregion
 
@@ -137,11 +129,6 @@ namespace Admin.Controllers
             {
                 return null;
             }
-        }
-
-        private async Task<bool> DeleteWidget(int id)
-        {
-            return await _widRepo.DeleteWidget(id);
         }
 
         [HttpPost]

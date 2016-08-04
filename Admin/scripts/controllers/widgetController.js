@@ -31,6 +31,10 @@
         ]
     });
 
+    $scope.listWidgets = function () {
+        $location.url('Widget/List');
+    };
+
     $scope.validationOptions = {
         ignore: [],
         rules: {

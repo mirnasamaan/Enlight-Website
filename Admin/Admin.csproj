@@ -193,12 +193,19 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="scripts\controllers\userListController.js" />
+    <Content Include="scripts\controllers\userAddController.js" />
+    <Content Include="scripts\controllers\userDeleteController.js" />
+    <Content Include="scripts\controllers\userDetailsController.js" />
+    <Content Include="scripts\controllers\userEditController.js" />
     <Content Include="scripts\controllers\widgetEditController.js" />
     <Content Include="scripts\controllers\widgetDeleteController.js" />
     <Content Include="scripts\controllers\widgetDetailsController.js" />
+    <Content Include="scripts\factories\userDetailsFactory.js" />
     <Content Include="scripts\factories\widgetDetailsFactory.js" />
+    <Content Include="scripts\factories\userEditFactory.js" />
     <Content Include="scripts\factories\widgetEditFactory.js" />
-    <Content Include="scripts\ServerSideProcessingFactory.js" />
+    <Content Include="scripts\factories\userAddFactory.js" />
     <Content Include="scripts\ServerSideProcessingCtrl.js" />
     <Content Include="scripts\controllers\widgetController.js" />
     <Content Include="scripts\custom.js" />
@@ -232,10 +239,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WidgetController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\User\UserDataItem.cs" />
+    <Compile Include="Models\User\UserDatatableData.cs" />
     <Compile Include="Models\Widget\WidgetDataItem.cs" />
     <Compile Include="Models\Widget\WidgetDatatableData.cs" />
     <Compile Include="Models\Account\CaptchaResponse.cs" />
@@ -260,6 +270,11 @@
     <Content Include="Views\Widget\Details.cshtml" />
     <Content Include="Views\Widget\Delete.cshtml" />
     <Content Include="Views\Widget\Edit.cshtml" />
+    <Content Include="Views\User\Add.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

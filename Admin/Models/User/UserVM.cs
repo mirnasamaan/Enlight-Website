@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Data;
+using System.ComponentModel.DataAnnotations;
 
 namespace Admin.Models.User
 {
     public class UserVM
     {
         public int ID { get; set; }
+        [Required]
+        [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail is not valid")]
         public string Email { get; set; }
+        [Required]
         public string Password { get; set; }
-        public System.DateTime CreationDate { get; set; }
+        public DateTime? CreationDate { get; set; }
         public string UserToken { get; set; }
+        public DateTime? LastLoginDate { get; set; }
 
         public UserVM ()
         {
@@ -25,6 +30,7 @@ namespace Admin.Models.User
             this.Email = user.Email;
             this.Password = user.Password;
             this.CreationDate = user.CreationDate;
+            this.LastLoginDate = user.LastLoginDate;
             this.UserToken = user.UserToken;
         }
 
@@ -34,7 +40,14 @@ namespace Admin.Models.User
             user.ID = this.ID;
             user.Email = this.Email;
             user.Password = this.Password;
-            user.CreationDate = this.CreationDate;
+            if (this.CreationDate != null)
+            {
+                user.CreationDate = this.CreationDate.Value;
+            }
+            if (this.LastLoginDate != null)
+            {
+                user.LastLoginDate = this.LastLoginDate.Value;
+            }
             user.UserToken = this.UserToken;
             return user;
         }

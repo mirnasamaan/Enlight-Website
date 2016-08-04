@@ -79,6 +79,7 @@ namespace Admin.Controllers
             }
             else
             {
+                model.Password = UserController.GetMd5Hash(model.Password);
                 bool isAuthenticated = _ur.isValidPassword(model.Email, model.Password);
                 if (!isAuthenticated)
                 {
@@ -87,7 +88,7 @@ namespace Admin.Controllers
                 }
                 FormsAuthentication.SetAuthCookie(model.Email, true);
                 User user = _ur.GetUserByEmail(model.Email);
-                user.LastLoginDate = DateTime.Now;
+                user.LastLoginDate = DateTime.UtcNow.ToLocalTime();
                 _ur.UpdateLastLogin(user);
                 return RedirectToAction("Index", "Dashboard");
             }
