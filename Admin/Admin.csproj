@@ -194,11 +194,14 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\controllers\clientAddController.js" />
+    <Content Include="scripts\controllers\quoteDeleteController.js" />
     <Content Include="scripts\controllers\contactDeleteController.js" />
     <Content Include="scripts\controllers\clientDeleteController.js" />
+    <Content Include="scripts\controllers\quoteDetailsController.js" />
     <Content Include="scripts\controllers\contactDetailsController.js" />
     <Content Include="scripts\controllers\clientDetailsController.js" />
     <Content Include="scripts\controllers\clientEditController.js" />
+    <Content Include="scripts\controllers\quoteListController.js" />
     <Content Include="scripts\controllers\contactListController.js" />
     <Content Include="scripts\controllers\clientListController.js" />
     <Content Include="scripts\controllers\userListController.js" />
@@ -210,6 +213,7 @@
     <Content Include="scripts\controllers\widgetDeleteController.js" />
     <Content Include="scripts\controllers\widgetDetailsController.js" />
     <Content Include="scripts\factories\clientAddFactory.js" />
+    <Content Include="scripts\factories\quoteDetailsFactory.js" />
     <Content Include="scripts\factories\contactDetailsFactory.js" />
     <Content Include="scripts\factories\clientDetailsFactory.js" />
     <Content Include="scripts\factories\userDetailsFactory.js" />
@@ -258,6 +262,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\QuoteController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
@@ -270,6 +275,9 @@
     <Compile Include="Models\Client\ClientDataItem.cs" />
     <Compile Include="Models\Client\ClientDatatableData.cs" />
     <Compile Include="Models\Client\ClientVM.cs" />
+    <Compile Include="Models\Quote\QuoteDataItem.cs" />
+    <Compile Include="Models\Quote\QuoteDatatableData.cs" />
+    <Compile Include="Models\Quote\QuoteVM.cs" />
     <Compile Include="Models\Contact\ContactDataItem.cs" />
     <Compile Include="Models\Contact\ContactDatatableData.cs" />
     <Compile Include="Models\Contact\ContactVM.cs" />
@@ -312,6 +320,9 @@
     <Content Include="Views\Contact\Delete.cshtml" />
     <Content Include="Views\Contact\Details.cshtml" />
     <Content Include="Views\Contact\List.cshtml" />
+    <Content Include="Views\Quote\Delete.cshtml" />
+    <Content Include="Views\Quote\Details.cshtml" />
+    <Content Include="Views\Quote\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
