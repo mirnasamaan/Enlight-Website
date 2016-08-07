@@ -17,6 +17,8 @@ AngularCustomJS.controller('clientDeleteController', clientDeleteController);
 AngularCustomJS.controller('clientEditController', clientEditController);
 AngularCustomJS.controller('contactDetailsController', contactDetailsController);
 AngularCustomJS.controller('contactDeleteController', contactDeleteController);
+AngularCustomJS.controller('quoteDetailsController', quoteDetailsController);
+AngularCustomJS.controller('quoteDeleteController', quoteDeleteController);
 
 AngularCustomJS.factory('widgetFactory', widgetFactory);
 AngularCustomJS.factory('widgetDetailsFactory', widgetDetailsFactory);
@@ -28,6 +30,7 @@ AngularCustomJS.factory('clientAddFactory', clientAddFactory);
 AngularCustomJS.factory('clientDetailsFactory', clientDetailsFactory);
 AngularCustomJS.factory('clientEditFactory', clientEditFactory);
 AngularCustomJS.factory('contactDetailsFactory', contactDetailsFactory);
+AngularCustomJS.factory('quoteDetailsFactory', quoteDetailsFactory);
 
 var configFunction = function ($routeProvider, $httpProvider) {
     $routeProvider.
@@ -102,6 +105,18 @@ var configFunction = function ($routeProvider, $httpProvider) {
         when('/Contact/Delete/:id', {
             templateUrl: '/Contact/Delete',
             controller: contactDeleteController
+        }).
+        when('/Quote/List', {
+            templateUrl: '/Quote/List',
+            controller: quoteListController
+        }).
+        when('/Quote/Details/:id', {
+            templateUrl: '/Quote/Details',
+            controller: quoteDetailsController
+        }).
+        when('/Quote/Delete/:id', {
+            templateUrl: '/Quote/Delete',
+            controller: quoteDeleteController
         });
 }
 configFunction.$inject = ['$routeProvider', '$httpProvider'];

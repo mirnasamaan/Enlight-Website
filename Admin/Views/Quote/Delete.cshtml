@@ -1,0 +1,102 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h4>Delete Quote?</h4>
+                    <p class="font-gray-dark">
+                        Are you sure you want to delete this contact?
+                    </p>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                            <a ng-click="listQuotes()" class="btn btn-primary">Back to list</a>
+                            <button ng-click="confirmDelete()" type="submit" class="btn btn-danger">Delete</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <table id="datatable" class="table table-striped table-bordered">
+                        <thead>
+                            <tr style="text-align:left;">
+                                <th>Attribute</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Name:
+                                </td>
+                                <td>
+                                    <input type="text" ng-model="quote.Name" disabled />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Email:
+                                </td>
+                                <td>
+                                    <input type="text" ng-model="quote.Email" disabled />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Phone:
+                                </td>
+                                <td>
+                                    <input type="text" ng-model="quote.Phone" disabled />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Category:
+                                </td>
+                                <td>
+                                    <input type="text" ng-model="quote.Category" disabled />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Type:
+                                </td>
+                                <td>
+                                    <input type="text" ng-model="quote.Type" disabled />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Message:
+                                </td>
+                                <td>
+                                    <textarea type="text" ng-model="quote.Message" disabled>{{ quote.Message }}</textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Knowledge Base:
+                                </td>
+                                <td>
+                                    <input type="text" ng-model="quote.KnowledgeBase" disabled />
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr style="text-align:left;">
+                                <th>Attribute</th>
+                                <th>Value</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <a ng-click="listQuotes()" class="btn btn-primary">Back to list</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
