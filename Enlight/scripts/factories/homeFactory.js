@@ -9,6 +9,17 @@
         });
 
     }
+
+    this.getClientContent = function () {
+
+        return $http.get(
+        '/Home/ListClients'
+        ).then(function (response) {
+            return response.data;
+        });
+
+    }
+
     return this;
 }
 

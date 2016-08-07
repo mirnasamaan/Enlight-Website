@@ -20,5 +20,17 @@ namespace Data.Repositories
         {
             return _ee.Widgets.OrderBy(i => i.WidgetOrder).ToList();
         }
+
+        public List<Client> getClients()
+        {
+            return _ee.Clients.ToList();
+        }
+
+        public async Task<Contact> addContact(Contact contact)
+        {
+            _ee.Contacts.Add(contact);
+            await _ee.SaveChangesAsync();
+            return contact;
+        }
     }
 }
