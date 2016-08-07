@@ -6,21 +6,23 @@ using System.Web.Mvc;
 using Data.Repositories;
 using System.Threading.Tasks;
 using Data.Context;
-using Admin.Models.User;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web.Script.Serialization;
+using Admin.Models.Client;
+using System.IO;
+using System.Drawing;
 
 namespace Admin.Controllers
 {
-    public class UserController : Controller
+    public class ClientController : Controller
     {
-        private UserRepository _userRepo;
+        private ClientRepository _clientRepo;
 
         #region Constructor
-        public UserController()
+        public ClientController()
         {
-            _userRepo = new UserRepository();
+            _clientRepo = new ClientRepository();
         }
         #endregion
 
@@ -51,12 +53,12 @@ namespace Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> Add(UserVM model)
+        public async Task<JsonResult> Add(ClientVM model)
         {
             Dictionary<string, string> data;
             JavaScriptSerializer jsSerializer = new JavaScriptSerializer();
 
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || model.LogoFile == null || model.LogoFile.ContentLength <= 0)
             {
                 data = new Dictionary<string, string>
                 {
@@ -67,20 +69,26 @@ namespace Admin.Controllers
             }
             else
             {
-                if (_userRepo.GetUserByEmail(model.Email) != null)
+                if (_clientRepo.GetClientByName(model.Name) != null)
                 {
                     data = new Dictionary<string, string>
                     {
                         { "success", "false"},
-                        { "msg", "This email (" + model.Email + ") already exists!" }
+                        { "msg", "This client (" + model.Name + ") already exists!" }
                     };
                     return Json(jsSerializer.Serialize(data), JsonRequestBehavior.AllowGet);
                 }
-                model.Password = GetMd5Hash(model.Password);
-                model.UserToken = Guid.NewGuid().ToString();
-                model.CreationDate = DateTime.UtcNow.ToLocalTime();
-                model.LastLoginDate = DateTime.UtcNow.ToLocalTime();
-                await _userRepo.AddUser(model.ToModel());
+
+                bool exists = System.IO.Directory.Exists(Server.MapPath("~/Uploads/Clients"));
+                if (!exists)
+                    System.IO.Directory.CreateDirectory(Server.MapPath("~/Uploads/Clients"));
+                Random rnd = new Random();
+                var fileName = Path.GetFileNameWithoutExtension(model.LogoFile.FileName) + "_" + rnd.Next(1, 10000) + Path.GetExtension(model.LogoFile.FileName);
+                var path = Path.Combine(Server.MapPath("~/Uploads/Clients"), fileName);
+                model.LogoFile.SaveAs(path);
+                model.Logo = fileName;
+
+                await _clientRepo.AddClient(model.ToModel());
                 data = new Dictionary<string, string>
                     {
                         { "success", "true"},
@@ -91,7 +99,7 @@ namespace Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> Edit(UserVM model)
+        public async Task<JsonResult> Edit(ClientVM model)
         {
             Dictionary<string, string> data;
             JavaScriptSerializer jsSerializer = new JavaScriptSerializer();
@@ -107,12 +115,22 @@ namespace Admin.Controllers
             }
             else
             {
-                User user = _userRepo.GetUserByEmail(model.Email);
-                if (user.Password != model.Password)
+                if (model.LogoFile != null && model.LogoFile.ContentLength > 0)
                 {
-                    model.Password = GetMd5Hash(model.Password);
-                    await _userRepo.EditUser(model.ToModel());
+                    bool exists = System.IO.Directory.Exists(Server.MapPath("~/Uploads/Clients"));
+                    if (!exists)
+                        System.IO.Directory.CreateDirectory(Server.MapPath("~/Uploads/Clients"));
+                    Random rnd = new Random();
+                    var fileName = Path.GetFileNameWithoutExtension(model.LogoFile.FileName) + "_" + rnd.Next(1, 10000) + Path.GetExtension(model.LogoFile.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Uploads/Clients"), fileName);
+                    model.LogoFile.SaveAs(path);
+                    model.Logo = fileName;
                 }
+                else
+                {
+                    model.Logo = _clientRepo.GetClient(model.ID).Logo;
+                }
+                _clientRepo.EditClient(model.ToModel());
                 data = new Dictionary<string, string>
                     {
                         { "success", "true"},
@@ -124,29 +142,8 @@ namespace Admin.Controllers
         #endregion
 
         #region Utilities
-        public static string GetMd5Hash(string input)
-        {
-            MD5 md5Hash = MD5.Create();
-            // Convert the input string to a byte array and compute the hash.
-            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
-
-            // Create a new Stringbuilder to collect the bytes
-            // and create a string.
-            StringBuilder sBuilder = new StringBuilder();
-
-            // Loop through each byte of the hashed data 
-            // and format each one as a hexadecimal string.
-            for (int i = 0; i < data.Length; i++)
-            {
-                sBuilder.Append(data[i].ToString("x2"));
-            }
-
-            // Return the hexadecimal string.
-            return sBuilder.ToString();
-        }
-
         [HttpPost]
-        public ActionResult ListUsers(int draw, int start, int length)
+        public ActionResult ListClients(int draw, int start, int length)
         {
             string search = Request.Form["search[value]"];
             int sortColumn = -1;
@@ -161,54 +158,43 @@ namespace Admin.Controllers
             }
             int recordsTotal = 0;
             int recordsFiltered = 0;
-            UserDatatableData dataTableData = new UserDatatableData();
+            ClientDatatableData dataTableData = new ClientDatatableData();
             dataTableData.draw = draw;
-            dataTableData.data = FilterUsersData(ref recordsTotal, ref recordsFiltered, start, length, search, sortColumn, sortDirection);
+            dataTableData.data = FilterClientsData(ref recordsTotal, ref recordsFiltered, start, length, search, sortColumn, sortDirection);
             dataTableData.recordsFiltered = recordsFiltered;
             dataTableData.recordsTotal = recordsTotal;
             return Json(dataTableData, JsonRequestBehavior.AllowGet);
         }
 
-        private List<UserDataItem> FilterUsersData(ref int recordsTotal, ref int recordFiltered, int start, int length, string search, int sortColumn, string sortDirection)
+        private List<ClientDataItem> FilterClientsData(ref int recordsTotal, ref int recordFiltered, int start, int length, string search, int sortColumn, string sortDirection)
         {
-            List<UserDataItem> widgets = new List<UserDataItem>();
-            IQueryable<User> data = _userRepo.GetFilteredUsers(ref recordsTotal, ref recordFiltered, start, length, search, sortColumn, sortDirection);
+            List<ClientDataItem> clients = new List<ClientDataItem>();
+            IQueryable<Client> data = _clientRepo.GetFilteredClients(ref recordsTotal, ref recordFiltered, start, length, search, sortColumn, sortDirection);
 
             if (data != null)
             {
                 foreach (var item in data)
                 {
-                    string lastlogin = "";
-                    if (item.LastLoginDate != null)
-                    {
-                        lastlogin = item.LastLoginDate.Value.ToShortDateString();
-                    }
-                    string Actions = "<a class='label label-primary' href='/#/User/Details/" + item.ID + "'>Details</a> <a class='label label-primary' href='/#/User/Edit/" + item.ID + "'>Edit</a> <a class='label label-danger' href='/#/User/Delete/" + item.ID + "'>Delete</a>";
-                    widgets.Add(new UserDataItem
+                    string Actions = "<a class='label label-primary' href='/#/Client/Details/" + item.ID + "'>Details</a> <a class='label label-primary' href='/#/Client/Edit/" + item.ID + "'>Edit</a> <a class='label label-danger' href='/#/Client/Delete/" + item.ID + "'>Delete</a>";
+                    clients.Add(new ClientDataItem
                     {
                         ID = item.ID,
-                        Email = item.Email,
-                        CreationDate = item.CreationDate.ToShortDateString(),
-                        LastLoginDate = lastlogin,
+                        Name = item.Name,
+                        Logo = item.Logo,
                         Actions = Actions
                     });
                 }
             }
-            return widgets;
+            return clients;
         }
 
         [HttpGet]
         public JsonResult GetDetails(int Id)
         {
-            User user = _userRepo.GetUser(Id);
-            if (user != null)
+            Client client = _clientRepo.GetClient(Id);
+            if (client != null)
             {
-                string lastlogin = "";
-                if(user.LastLoginDate != null)
-                {
-                    lastlogin = user.LastLoginDate.Value.ToShortDateString();
-                }
-                UserDataItem data = new UserDataItem() { Email = user.Email, CreationDate = user.CreationDate.ToShortDateString(), LastLoginDate = lastlogin, Password = user.Password, UserToken = user.UserToken };
+                ClientDataItem data = new ClientDataItem() { ID = client.ID, Name = client.Name, Logo = client.Logo };
                 return Json(data, JsonRequestBehavior.AllowGet);
             }
             else
@@ -223,7 +209,7 @@ namespace Admin.Controllers
             Dictionary<string, string> data;
             JavaScriptSerializer jsSerializer = new JavaScriptSerializer();
 
-            bool success = await _userRepo.DeleteUser(id);
+            bool success = await _clientRepo.DeleteClient(id);
             if (success)
             {
                 data = new Dictionary<string, string>

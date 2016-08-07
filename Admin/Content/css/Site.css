@@ -30,3 +30,12 @@ div.dataTables_wrapper div.dataTables_filter input {
 .actions {
     cursor: pointer;
 }
+.thumb {
+    width: 100px;
+    float: none;
+    position: relative;
+    top: 7px;
+}
+.client-logo {
+    width: 100px;
+}

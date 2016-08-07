@@ -51,22 +51,20 @@
                                 <li>
                                     <a><i class="fa fa-users"></i> Clients <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="#">List Clients</a></li>
-                                        <li><a href="#">Add Client</a></li>
+                                        <li><a href="/#/Client/List">List Clients</a></li>
+                                        <li><a href="/#/Client/Add">Add Client</a></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <a><i class="fa fa-newspaper-o"></i> Contact Forms <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="#">List Contact Forms</a></li>
-                                        <li><a href="#">Add Contact Form</a></li>
+                                        <li><a href="/#/Contact/List">List Contact Forms</a></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <a><i class="fa fa-bars"></i> Quotes <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="#">List Quotes</a></li>
-                                        <li><a href="#">Add Quote</a></li>
+                                        <li><a href="/#/Quotes/List">List Quotes</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -137,6 +135,7 @@
     <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
     <script src="~/scripts/ServerSideProcessingCtrl.js"></script>
     <script src="~/scripts/ServerSideProcessingFactory.js"></script>
-    @Scripts.Render("~/bundles/AngularCustomJS")
+    <script src="~/scripts/ng-file-upload.min.js"></script>
+        @Scripts.Render("~/bundles/AngularCustomJS")
 </body>
 </html>

@@ -193,6 +193,14 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="scripts\controllers\clientAddController.js" />
+    <Content Include="scripts\controllers\contactDeleteController.js" />
+    <Content Include="scripts\controllers\clientDeleteController.js" />
+    <Content Include="scripts\controllers\contactDetailsController.js" />
+    <Content Include="scripts\controllers\clientDetailsController.js" />
+    <Content Include="scripts\controllers\clientEditController.js" />
+    <Content Include="scripts\controllers\contactListController.js" />
+    <Content Include="scripts\controllers\clientListController.js" />
     <Content Include="scripts\controllers\userListController.js" />
     <Content Include="scripts\controllers\userAddController.js" />
     <Content Include="scripts\controllers\userDeleteController.js" />
@@ -201,11 +209,24 @@
     <Content Include="scripts\controllers\widgetEditController.js" />
     <Content Include="scripts\controllers\widgetDeleteController.js" />
     <Content Include="scripts\controllers\widgetDetailsController.js" />
+    <Content Include="scripts\factories\clientAddFactory.js" />
+    <Content Include="scripts\factories\contactDetailsFactory.js" />
+    <Content Include="scripts\factories\clientDetailsFactory.js" />
     <Content Include="scripts\factories\userDetailsFactory.js" />
+    <Content Include="scripts\factories\clientEditFactory.js" />
     <Content Include="scripts\factories\widgetDetailsFactory.js" />
     <Content Include="scripts\factories\userEditFactory.js" />
     <Content Include="scripts\factories\widgetEditFactory.js" />
     <Content Include="scripts\factories\userAddFactory.js" />
+    <Content Include="scripts\FileAPI.flash.swf" />
+    <Content Include="scripts\FileAPI.js" />
+    <Content Include="scripts\FileAPI.min.js" />
+    <Content Include="scripts\ng-file-upload-all.js" />
+    <Content Include="scripts\ng-file-upload-all.min.js" />
+    <Content Include="scripts\ng-file-upload-shim.js" />
+    <Content Include="scripts\ng-file-upload-shim.min.js" />
+    <Content Include="scripts\ng-file-upload.js" />
+    <Content Include="scripts\ng-file-upload.min.js" />
     <Content Include="scripts\ServerSideProcessingCtrl.js" />
     <Content Include="scripts\controllers\widgetController.js" />
     <Content Include="scripts\custom.js" />
@@ -239,11 +260,19 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\WidgetController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Client\ClientDataItem.cs" />
+    <Compile Include="Models\Client\ClientDatatableData.cs" />
+    <Compile Include="Models\Client\ClientVM.cs" />
+    <Compile Include="Models\Contact\ContactDataItem.cs" />
+    <Compile Include="Models\Contact\ContactDatatableData.cs" />
+    <Compile Include="Models\Contact\ContactVM.cs" />
     <Compile Include="Models\User\UserDataItem.cs" />
     <Compile Include="Models\User\UserDatatableData.cs" />
     <Compile Include="Models\Widget\WidgetDataItem.cs" />
@@ -275,6 +304,14 @@
     <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\List.cshtml" />
+    <Content Include="Views\Client\Add.cshtml" />
+    <Content Include="Views\Client\Delete.cshtml" />
+    <Content Include="Views\Client\Details.cshtml" />
+    <Content Include="Views\Client\Edit.cshtml" />
+    <Content Include="Views\Client\List.cshtml" />
+    <Content Include="Views\Contact\Delete.cshtml" />
+    <Content Include="Views\Contact\Details.cshtml" />
+    <Content Include="Views\Contact\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

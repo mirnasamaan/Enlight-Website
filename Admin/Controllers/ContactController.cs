@@ -3,31 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Data.Context;
-using Admin.Models.Widget;
-using System.Threading.Tasks;
 using Data.Repositories;
+using System.Threading.Tasks;
+using Data.Context;
+using Admin.Models.Contact;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web.Script.Serialization;
 
 namespace Admin.Controllers
 {
-    public class WidgetController : Controller
+    public class ContactController : Controller
     {
-        private WidgetRepository _widRepo;
+        private ContactRepository _contactRepo;
 
         #region Constructor
-        public WidgetController()
+        public ContactController()
         {
-            _widRepo = new WidgetRepository();
+            _contactRepo = new ContactRepository();
         }
         #endregion
 
         #region Pages
-        public ActionResult Add()
-        {
-            return View();
-        }
-
         public ActionResult List()
         {
             return View();
@@ -42,36 +39,11 @@ namespace Admin.Controllers
         {
             return View();
         }
-
-        public ActionResult Edit()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<ActionResult> Add(WidgetVM model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View("Add");
-            }
-            else
-            {
-                await _widRepo.AddWidget(model.toModel());
-                return View("List");
-            }
-        }
-
-        [HttpPost]
-        public async Task<Widget> Edit(WidgetVM model)
-        {
-            return await _widRepo.EditWidget(model.toModel());
-        }
         #endregion
 
         #region Utilities
         [HttpPost]
-        public ActionResult ListWidgets(int draw, int start, int length)
+        public ActionResult ListContacts(int draw, int start, int length)
         {
             string search = Request.Form["search[value]"];
             int sortColumn = -1;
@@ -86,60 +58,66 @@ namespace Admin.Controllers
             }
             int recordsTotal = 0;
             int recordsFiltered = 0;
-            WidgetDatatableData dataTableData = new WidgetDatatableData();
+            ContactDatatableData dataTableData = new ContactDatatableData();
             dataTableData.draw = draw;
-            dataTableData.data = FilterWidgetsData(ref recordsTotal, ref recordsFiltered, start, length, search, sortColumn, sortDirection);
+            dataTableData.data = FilterContactsData(ref recordsTotal, ref recordsFiltered, start, length, search, sortColumn, sortDirection);
             dataTableData.recordsFiltered = recordsFiltered;
             dataTableData.recordsTotal = recordsTotal;
             return Json(dataTableData, JsonRequestBehavior.AllowGet);
         }
 
-        private List<WidgetDataItem> FilterWidgetsData(ref int recordsTotal, ref int recordFiltered, int start, int length, string search, int sortColumn, string sortDirection)
+        private List<ContactDataItem> FilterContactsData(ref int recordsTotal, ref int recordFiltered, int start, int length, string search, int sortColumn, string sortDirection)
         {
-            List<WidgetDataItem> widgets = new List<WidgetDataItem>();
-            IQueryable<Widget> data = _widRepo.GetFilteredWidgets(ref recordsTotal, ref recordFiltered, start, length, search, sortColumn, sortDirection);
+            List<ContactDataItem> contacts = new List<ContactDataItem>();
+            IQueryable<Contact> data = _contactRepo.GetFilteredContacts(ref recordsTotal, ref recordFiltered, start, length, search, sortColumn, sortDirection);
 
             if (data != null)
             {
                 foreach (var item in data)
                 {
-                    string Actions = "<a class='label label-primary' href='/#/Widget/Details/" + item.Id + "'>Details</a> <a class='label label-primary' href='/#/Widget/Edit/" + item.Id + "'>Edit</a> <a class='label label-danger' href='/#/Widget/Delete/" + item.Id + "'>Delete</a>";
-                    widgets.Add(new WidgetDataItem
+                    string Actions = "<a class='label label-primary' href='/#/Contact/Details/" + item.Id + "'>Details</a> <a class='label label-danger' href='/#/Contact/Delete/" + item.Id + "'>Delete</a>";
+                    string msg = item.Message.Length > 200 ? item.Message.Substring(0, 200) : item.Message;
+                    contacts.Add(new ContactDataItem
                     {
                         ID = item.Id,
                         Name = item.Name,
-                        Title = item.Title,
-                        Subtitle = item.SubTitle,
-                        Order = item.WidgetOrder,
+                        Email = item.Email,
+                        Phone = item.Phone,
+                        Message = msg,
                         Actions = Actions
                     });
                 }
             }
-            return widgets;
+            return contacts;
         }
 
         [HttpGet]
         public JsonResult GetDetails(int Id)
         {
-            Widget widget = _widRepo.GetWidget(Id);
-            if (widget != null)
+            Contact contact = _contactRepo.GetContact(Id);
+            if (contact != null)
             {
-                return Json(new WidgetVM(widget), JsonRequestBehavior.AllowGet);
+                ContactDataItem data = new ContactDataItem() {
+                    Name = contact.Name,
+                    Email = contact.Email,
+                    Phone = contact.Phone,
+                    Message = contact.Message
+                };
+                return Json(data, JsonRequestBehavior.AllowGet);
             }
             else
             {
                 return null;
             }
         }
-
+        
         [HttpPost]
         public async Task<JsonResult> ConfirmDelete(int id)
         {
-
             Dictionary<string, string> data;
             JavaScriptSerializer jsSerializer = new JavaScriptSerializer();
 
-            bool success = await _widRepo.DeleteWidget(id);
+            bool success = await _contactRepo.DeleteContact(id);
             if (success)
             {
                 data = new Dictionary<string, string>
