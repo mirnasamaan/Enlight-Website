@@ -1,10 +1,14 @@
-﻿var widgetDetailsController = function ($scope, $routeParams, $http, widgetDetailsFactory) {
+﻿var widgetDetailsController = function ($scope, $routeParams, $http, $location, widgetDetailsFactory) {
 
     widgetDetailsFactory.getWidget($routeParams.id)
       .then(function (data) {
           $scope.widget = data;
           tinyMCE.activeEditor.setContent(data.Content);
       });
+
+    $scope.listWidgets = function () {
+        $location.url('Widget/List');
+    };
 
     tinymce.init({
         selector: '.content',
@@ -20,4 +24,4 @@
     });
 }
 
-widgetDetailsController.$inject = ['$scope', '$routeParams', '$http', 'widgetDetailsFactory'];
+widgetDetailsController.$inject = ['$scope', '$routeParams', '$http', '$location', 'widgetDetailsFactory'];

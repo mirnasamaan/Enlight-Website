@@ -143,7 +143,30 @@ textarea {
     display: inline-block;
     line-height: 30px;
 }
+.title > div > div {
+    width: 1px;
+    height: 50px;
+    margin: 15px auto;
+}
+.title > div > div > div {
+    height: 0px;
+    border-left: 2px solid #134b6c;
+}
+.title > div > .tit-div {
+    width: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    border: none;
+    margin: 0 auto;
+    height: auto;
+    display: inline-block;
+    visibility: hidden;
+}
+.typed-cursor {
+    display: none;
+}
 .title .subtitle {
+    visibility: hidden;
     font-size: 16px;
     font-family: 'Open Sans', sans-serif;
     width: auto;
@@ -151,12 +174,6 @@ textarea {
     border: none;
     margin: 0;
     text-transform: none;
-}
-.title > div > div {
-    width: 1px;
-    height: 50px;
-    border-left: 2px solid #134b6c;
-    margin: 15px auto;
 }
 .services .content {
     background-color: #134b6c;

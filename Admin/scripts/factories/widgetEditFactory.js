@@ -1,4 +1,4 @@
-﻿var widgetEditFactory = function ($http, $q) {
+﻿var widgetEditFactory = function ($http, $q, $location) {
     
     return function (id, name, title, subtitle, widgetcontent, order) {
 
@@ -15,10 +15,11 @@
             }
         ).
         success(function (data) {
-            if (data == "True") {
-                deferredObject.resolve({ success: true });
+            var obj = JSON.parse(data);
+            if (obj.success == "false") {
+                alert(obj.msg)
             } else {
-                deferredObject.resolve({ success: false });
+                $location.path('/Widget/List', false);
             }
         }).
         error(function (data) {
@@ -29,4 +30,4 @@
     }
 }
 
-widgetEditFactory.$inject = ['$http', '$q'];
+widgetEditFactory.$inject = ['$http', '$q', '$location'];
