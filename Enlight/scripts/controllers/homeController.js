@@ -1,64 +1,66 @@
-﻿var homeController = function ($scope, $routeParams, homeFactory) {
+﻿var homeController = function ($scope, $sce, $routeParams, homeFactory, contactFactory) {
+
+    $scope.addWidgetForm = {
+        name: '',
+        email: '',
+        number: '',
+        message: '',
+        returnUrl: $routeParams.returnUrl
+    };
 
     homeFactory.getHomeContent()
       .then(function (data) {
-          console.log(data);
           $scope.homeContent = data;
-      });
-
-    var sticky_header_height;
-    //---------- Navigation links animation ----------//
-    function home () {
-        $('body,html').animate({
-            scrollTop: 0
-        }, 1000);
-        $('.nav > li').removeClass("active");
-        $("#home-link").addClass("active");
-        return false;
-    }
-    function services(e) {
-        $('body,html').animate({
-            scrollTop: $('#services').offset().top + (-sticky_header_height)
-        }, 1000);
-        $('.nav > li').removeClass("active");
-        $("#services-link").addClass("active");
-        return false;
-    }
-    function stream() {
-        $('body,html').animate({
-            scrollTop: $('#stream').offset().top + (-sticky_header_height)
-        }, 1000);
-        $('.nav > li').removeClass("active");
-        $("#stream-link").addClass("active");
-        return false;
-    }
-    function clients() {
-        $('body,html').animate({
-            scrollTop: $('#clients').offset().top + (-sticky_header_height)
-        }, 1000);
-        $('.nav > li').removeClass("active");
-        $("#clients-link").addClass("active");
-        return false;
-    }
-    function team() {
-        $('body,html').animate({
-            scrollTop: $('#team').offset().top + (-sticky_header_height)
-        }, 1000);
-        $('.nav > li').removeClass("active");
-        $("#team-link").addClass("active");
-        return false;
-    }
-    function contact() {
-        $('body,html').animate({
-            scrollTop: $('#contact').offset().top + (-sticky_header_height)
-        }, 1000);
-        $('.nav > li').removeClass("active");
-        $("#contact-link").addClass("active");
-        return false;
+          return homeFactory.getClientContent()
+      })
+      .then(function (data) {
+          $scope.clientContent = data;
+          return homeFactory.getClientContent()
+      })
+     .then(function () {
+         $('.flexslider').flexslider({
+             animation: "slide",
+             animationLoop: false,
+             itemWidth: 244,
+             itemMargin: 40,
+             minItems: 2,
+             maxItems: 4
+         });
+     });
+          
+    
+    $scope.to_trusted = function (html_code) {
+        return $sce.trustAsHtml(html_code);
     }
 
+    $scope.validationOptions = {
+        ignore: [],
+        rules: {
+            name: "required",
+            email: "required",
+            number: "required",
+            message: "required"
+        },
+        errorPlacement: function (error, element) {
+            error.insertAfter(element);
+        }
+    }
+
+    $scope.add = function (form) {
+        if (form.validate()) {
+            $scope.submitContact = function () {
+                var result = contactFactory($scope.addWidgetForm.name, $scope.addWidgetForm.email, $scope.addWidgetForm.number, $scope.addWidgetForm.message);
+                return result;
+            }
+           .then(function (data) {
+               
+           })
+            
+        }
+    } 
+
+    
     $(document).ready(function () {
-
         //--------- Gatting and setting sections height according to screen size ----------//
         $(".banner").css("height", $(window).height());
         var main_banner_height = $(".banner").height();
@@ -154,4 +156,4 @@
 
 }
 
-homeController.$inject = ['$scope', '$routeParams', 'homeFactory'];
+homeController.$inject = ['$scope', '$sce', '$routeParams', 'homeFactory', 'contactFactory'];

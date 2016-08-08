@@ -163,6 +163,8 @@
     <Content Include="Global.asax" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
+    <Content Include="scripts\angular-bind-html-compile.js" />
+    <Content Include="scripts\angular-sanitize.min.js" />
     <Content Include="scripts\angular-validate.js" />
     <Content Include="scripts\AngularCustomJS.js" />
     <Content Include="scripts\bootstrap.js" />
@@ -177,6 +179,7 @@
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\bselect.min.js" />
     <Content Include="scripts\controllers\homeController.js" />
+    <Content Include="scripts\factories\contactFactory.js" />
     <Content Include="scripts\factories\homeFactory.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
@@ -194,6 +197,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ClientsVM.cs" />
+    <Compile Include="Models\ContactVM.cs" />
     <Compile Include="Models\WidgetVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
