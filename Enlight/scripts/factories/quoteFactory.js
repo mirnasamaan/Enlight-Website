@@ -1,13 +1,16 @@
-﻿var contactFactory = function ($http, $q, $location) {
-    return function (name, email, number, message) {
+﻿var quoteFactory = function ($http, $q, $location) {
+    return function (name, email, phone, category, type, message, recommend) {
         var deferredObject = $q.defer();
-        
+
         $http.post(
-            '/Home/AddContact', {
+            '/Home/AddQuote', {
                 Name: name,
                 Email: email,
-                Phone: number,
-                Message: message
+                Phone: phone,
+                Category: category,
+                Type: type,
+                Message: message,
+                KnowledgeBase: recommend
             }
         ).
         success(function (data) {
@@ -25,4 +28,4 @@
     }
 }
 
-contactFactory.$inject = ['$http', '$q', '$location'];
+quoteFactory.$inject = ['$http', '$q', '$location'];

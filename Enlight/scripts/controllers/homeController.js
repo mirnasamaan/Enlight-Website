@@ -1,10 +1,21 @@
-﻿var homeController = function ($scope, $sce, $routeParams, homeFactory, contactFactory) {
+﻿var homeController = function ($q, $scope, $sce, $routeParams, homeFactory, contactFactory, quoteFactory) {
 
     $scope.addWidgetForm = {
         name: '',
         email: '',
         number: '',
         message: '',
+        returnUrl: $routeParams.returnUrl
+    };
+
+    $scope.addQuoteForm = {
+        name: '',
+        email: '',
+        phone: '',
+        category: '',
+        type: '',
+        message: '',
+        recommend: '',
         returnUrl: $routeParams.returnUrl
     };
 
@@ -46,18 +57,94 @@
         }
     }
 
+    //$validatorProvider.addMethod("valueNotEquals", function (value, element, arg) {
+    //    return arg != value;
+    //}),
+
+    $scope.validationOptionsSubmit = {
+        //ignore: [],
+        rules: {
+            name: "required",
+            email: "required",
+            phone: "required",
+            category: {
+                required: true,
+                number: true,
+            },
+            type: {
+                required: true,
+                number: true,
+            },
+            message: "required",
+            recommend: {
+                required: true,
+                number: true,
+            }
+        },
+        messages: {
+            category: {
+                number: "This field is required"
+            },
+            type: {
+                number: "This field is required"
+            },
+            recommend: {
+                number: "This field is required"
+            }
+        },
+        errorPlacement: function (error, element) {
+            if (element.attr("name") == "category" || element.attr("name") == "type" || element.attr("name") == "recommend") {
+                error.insertAfter(element.parent().children(".bselect"));
+            } else {
+                error.insertAfter(element);
+            }
+        }
+    }
+
     $scope.add = function (form) {
         if (form.validate()) {
-            $scope.submitContact = function () {
-                var result = contactFactory($scope.addWidgetForm.name, $scope.addWidgetForm.email, $scope.addWidgetForm.number, $scope.addWidgetForm.message);
-                return result;
-            }
-           .then(function (data) {
-               
-           })
-            
+            var result = contactFactory($scope.addWidgetForm.name, $scope.addWidgetForm.email, $scope.addWidgetForm.number, $scope.addWidgetForm.message);
+            result.then(function (data) {
+                if (data.success == true)
+                {
+                    $scope.err_msg = "Form was submitted successfully"
+                }
+                else
+                {
+                    $scope.err_msg = "Something went wrong...Please try again"
+                }
+            });
         }
-    } 
+    }
+
+    $scope.submit = function (form) {
+        
+        if (form.validate()) {
+            $scope.addQuoteForm.category = $scope.category;
+            $scope.addQuoteForm.type = $scope.type;
+            $scope.addQuoteForm.recommend = $scope.recommend;
+            var result = quoteFactory($scope.addQuoteForm.name, $scope.addQuoteForm.email, $scope.addQuoteForm.phone, $scope.addQuoteForm.category, $scope.addQuoteForm.type, $scope.addQuoteForm.message, $scope.addQuoteForm.recommend);
+            result.then(function (data) {
+                if (data.success == true) {
+                    $scope.err_msg = "Form was submitted successfully"
+                }
+                else {
+                    $scope.err_msg = "Something went wrong...Please try again"
+                }
+            });
+        }
+    }
+
+    //$scope.add = function (form) {
+    //    if (form.validate()) {
+    //        $q.all([
+    //        contactFactory($scope.addWidgetForm.name, $scope.addWidgetForm.email, $scope.addWidgetForm.number, $scope.addWidgetForm.message)
+    //        ]).then(function (data) {
+    //            alert(data);
+    //        });
+    //    }
+    //}
+    
 
     
     $(document).ready(function () {
@@ -95,6 +182,7 @@
 
     var counted = false;
     $(document).ready(function () {
+        $(".bselect a").removeAttr('href');
         $('select').bselect();
         $('.flexslider').flexslider({
             animation: "slide",
@@ -104,6 +192,23 @@
             minItems: 2,
             maxItems: 4
         });
+    });
+
+    $('.bselect a').click(function (e) {
+        e.preventDefault();
+        console.log(e);
+        var x = ($(event.target).text());
+        if (x == "Option 1" || x == "Option 2" || x == "Option 3")
+        {
+            $scope.category = x;
+            //$("#category").val(x);
+        }
+        if (x == "Option 4" || x == "Option 5" || x == "Option 6") {
+            $scope.type = x;
+        }
+        if (x == "Option 7" || x == "Option 8" || x == "Option 9") {
+            $scope.recommend = x;
+        }
     });
 
     $(window).scroll(function () {
@@ -156,4 +261,4 @@
 
 }
 
-homeController.$inject = ['$scope', '$sce', '$routeParams', 'homeFactory', 'contactFactory'];
+homeController.$inject = ['$q', '$scope', '$sce', '$routeParams', 'homeFactory', 'contactFactory', 'quoteFactory'];

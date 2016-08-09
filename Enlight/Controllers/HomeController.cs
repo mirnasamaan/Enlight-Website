@@ -4,10 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Threading.Tasks;
-using System.Web.Script.Serialization;
 using Data.Repositories;
 using Data.Context;
 using Enlight.Models;
+
 
 namespace Enlight.Controllers
 {
@@ -61,41 +61,46 @@ namespace Enlight.Controllers
 
 
         [HttpPost]
-        public async Task<JsonResult> AddContact(ContactVM model)
+        public async Task<bool> AddContact(ContactVM model)
         {
-            Dictionary<string, string> data;
-            JavaScriptSerializer jsSerializer = new JavaScriptSerializer();
             if (!ModelState.IsValid)
             {
-                data = new Dictionary<string, string>
-                {
-                    { "success", "false"},
-                    { "msg", "Please check validation errors" }
-                };
-                return Json(jsSerializer.Serialize(data), JsonRequestBehavior.AllowGet);
+                return false;
             }
             else
             {
                 Contact contact = await _mr.addContact(model.toModel());
                 if (contact != null)
                 {
-                    data = new Dictionary<string, string>
-                    {
-                        { "success", "true"},
-                        { "msg", "Success!" }
-                    };
-                    return Json(jsSerializer.Serialize(data), JsonRequestBehavior.AllowGet);
+                    return true;
                 }
                 else
                 {
-                    data = new Dictionary<string, string>
+                    return false;
+                }
+            }
+        }
+
+
+        [HttpPost]
+        public async Task<bool> AddQuote(QuoteVM model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return false;
+            }
+            else
+            {
+                Quote quote = await _mr.addQuote(model.toModel());
+                if (quote != null)
                 {
-                    { "success", "false"},
-                    { "msg", "Faliure!" }
-                };
-                    return Json(jsSerializer.Serialize(data), JsonRequestBehavior.AllowGet);
+                    return true;
+                }
+                else
+                {
+                    return false;
                 }
             }
         }
     }
-}
+}   

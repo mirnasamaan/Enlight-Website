@@ -32,5 +32,12 @@ namespace Data.Repositories
             await _ee.SaveChangesAsync();
             return contact;
         }
+
+        public async Task<Quote> addQuote(Quote quote)
+        {
+            _ee.Quotes.Add(quote);
+            await _ee.SaveChangesAsync();
+            return quote;
+        }
     }
 }

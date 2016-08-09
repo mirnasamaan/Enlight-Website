@@ -1,7 +1,14 @@
 ﻿var AngularCustomJS = angular.module('AngularCustomJS', ['ngRoute', 'ngValidate', 'ngSanitize', 'angular-bind-html-compile']);
 
+//AngularCustomJS.config(function ($validatorProvider) {
+//    $validatorProvider.addMethod("valueNotEquals", function (value, element, arg) {
+//        return arg != value;
+//    }, "This field is required.");
+//    });
+
 AngularCustomJS.controller('homeController', homeController);
 AngularCustomJS.factory('contactFactory', contactFactory);
+AngularCustomJS.factory('quoteFactory', quoteFactory);
 
 AngularCustomJS.controller('mainCtrl', [ '$scope',function ($scope) {
 
@@ -71,6 +78,9 @@ var configFunction = function ($routeProvider, $httpProvider) {
             templateUrl: '/Home/Main',
             controller: homeController
         });
+    //$validatorProvider.addMethod("valueNotEquals", function (value, element, arg) {
+    //    return arg != value;
+    //}, "This field is required.");
 }
 configFunction.$inject = ['$routeProvider', '$httpProvider'];
 
