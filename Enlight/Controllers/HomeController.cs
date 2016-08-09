@@ -4,9 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using Data.Repositories;
 using Data.Context;
 using Enlight.Models;
+using System.Net.Mail;
 
 
 namespace Enlight.Controllers
@@ -72,6 +74,7 @@ namespace Enlight.Controllers
                 Contact contact = await _mr.addContact(model.toModel());
                 if (contact != null)
                 {
+                    SendMail(model);
                     return true;
                 }
                 else
@@ -100,6 +103,28 @@ namespace Enlight.Controllers
                 {
                     return false;
                 }
+            }
+        }
+
+        private void SendMail(ContactVM contact)
+        {
+            MailMessage message = new MailMessage();
+            message.To.Add("info@enlightworld.com");
+            message.From = new MailAddress("noreply@enlightworld.com", "No Reply");
+            message.Subject = "Enlight Contact Form Submission";
+            message.IsBodyHtml = true;
+            string msg = "<p>Contsct form submitted with the following details.</p></br>";
+            msg = msg + "<p>Name: " + contact.Name + "</p></br><p>Email: " + contact.Email + "</p></br>";
+            msg = msg + "<p>Phone: " + contact.Phone + "</p></br><p>Message: " + contact.Message + "</p></br>";
+            message.Body = msg;
+
+            try
+            {
+                System.Net.Mail.SmtpClient smtp = new SmtpClient("relay-hosting.secureserver.net", 25);
+                smtp.Send(message);
+            }
+            catch (Exception ex)
+            {
             }
         }
     }

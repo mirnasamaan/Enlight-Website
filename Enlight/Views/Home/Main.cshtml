@@ -14,9 +14,8 @@
 
 <div id="page-content">
     <div ng-repeat="x in homeContent">
-        @*<div bind-html-compile="to_trusted(x.WidgetContent)"></div>*@
         <div bind-html-compile="x.WidgetContent"></div>
-    </div>   
+    </div>  
 </div>
 
 <div class="modal fade" id="quoteModal" tabindex="-1" role="dialog">

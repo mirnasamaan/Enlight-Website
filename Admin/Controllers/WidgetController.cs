@@ -63,9 +63,34 @@ namespace Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<Widget> Edit(WidgetVM model)
+        public async Task<JsonResult> Edit(WidgetVM model)
         {
-            return await _widRepo.EditWidget(model.toModel());
+            Dictionary<string, string> data;
+            JavaScriptSerializer jsSerializer = new JavaScriptSerializer();
+
+            if (!ModelState.IsValid)
+            {
+                data = new Dictionary<string, string>
+                {
+                    { "success", "false"},
+                    { "msg", "Please check validation errors" }
+                };
+                return Json(jsSerializer.Serialize(data), JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                if (model.Id == 5)
+                {
+                    model.Content = _widRepo.GetWidget(model.Id.Value).WidgetContent;
+                }
+                await _widRepo.EditWidget(model.toModel());
+                data = new Dictionary<string, string>
+                    {
+                        { "success", "true"},
+                        { "msg", "Success!" }
+                    };
+                return Json(jsSerializer.Serialize(data), JsonRequestBehavior.AllowGet);
+            }
         }
         #endregion
 

@@ -3,7 +3,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Edit User <small></small></h2>
+                    <h2>Edit Widget <small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li>
                             <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -12,7 +12,7 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    <form ng-submit="edit(editform)" name="editform" ng-validate="validationOptions">
+                    <form ng-submit="edit(editform)" name="editform" enctype="multipart/form-data" ng-validate="validationOptions">
                         <table id="datatable" class="table table-striped table-bordered">
                             <thead>
                                 <tr style="text-align:left;">
@@ -23,30 +23,49 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <label for="name">Email:</label>
+                                        <label for="name">Name:</label>
                                     </td>
                                     <td>
-                                        <input type="email" ng-model="user.Email" id="email" name="email" disabled />
-                                        <input type="hidden" ng-model="user.Id" id="id" name="id" />
-                                        <input type="hidden" ng-model="user.UserToken" id="token" name="token" />
-                                        <input type="hidden" ng-model="user.CreationDate" id="creationdate" name="creationdate" />
-                                        <input type="hidden" ng-model="user.LastLoginDate" id="lastlogindate" name="lastlogindate" />
+                                        <input type="text" ng-model="widget.Name" id="name" name="name" />
+                                        <input type="hidden" ng-model="widget.Id" id="id" name="id" />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <label for="title">Password:</label>
+                                        <label for="title">Title:</label>
                                     </td>
                                     <td>
-                                        <input type="password" id="pass" name="password" ng-model="user.Password" required />
+                                        <input type="text" id="title" name="title" ng-model="widget.Title" required />
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <label for="subtitle">Confirm Password:</label>
+                                        <label for="subtitle">Subtitle:</label>
                                     </td>
                                     <td>
-                                        <input type="password" id="confirmpassword" name="confirmpassword" />
+                                        <input type="text" id="subtitle" name="subtitle" ng-model="widget.SubTitle" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="content">Content:</label>
+                                    </td>
+                                    <td >
+                                        <div ng-if="widget.Id != 5">
+                                            <textarea type="text" id="content-submit"></textarea>
+                                            <textarea id="widgetcontent" name="widgetcontent" ng-model="widget.Content" hidden></textarea>
+                                        </div>
+                                        <div ng-if="widget.Id == 5">
+                                            <textarea type="text" class="content" ng-model="widget.Content" disabled></textarea>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="order">Order:</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="order" name="order" ng-model="widget.Order" />
                                     </td>
                                 </tr>
                             </tbody>
@@ -59,7 +78,7 @@
                         </table>
                         <input type="submit" value="submit" class="btn btn-success">
                     </form>
-                    <a ng-click="listUsers()" class="btn btn-primary">Back to list</a>
+                    <a ng-click="listWidgets()" class="btn btn-primary">Back to list</a>
                 </div>
             </div>
         </div>
