@@ -50,9 +50,14 @@
                                     <td>
                                         <label for="content">Content:</label>
                                     </td>
-                                    <td>
-                                        <textarea type="text" id="content-submit"></textarea>
-                                        <textarea id="widgetcontent" name="widgetcontent" ng-model="widget.Content" hidden></textarea>
+                                    <td >
+                                        <div ng-if="widget.Id != 5">
+                                            <textarea type="text" id="content-submit"></textarea>
+                                            <textarea id="widgetcontent" name="widgetcontent" ng-model="widget.Content" hidden></textarea>
+                                        </div>
+                                        <div ng-if="widget.Id == 5">
+                                            <textarea type="text" class="content" ng-model="widget.Content" disabled></textarea>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>

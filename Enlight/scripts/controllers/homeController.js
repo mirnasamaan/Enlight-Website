@@ -67,7 +67,7 @@
         sticky_header_height = $(".sticky").height();
         var counted = false;
 
-        //---------- change top banne height when resizing the window ----------//
+        //---------- change top banner height when resizing the window ----------//
         $(window).resize(function () {
             $(".banner").css("height", $(window).height());
             main_banner_height = $(".banner").height();
@@ -76,8 +76,14 @@
 
         //---------- Scroll to content of page when clicking on the down arrow in the homepage slider -----------//
         $('.down-arrow').click(function () {
+            var offset = 0;
+            if ($(window).width() > 768) {
+                offset = - sticky_header_height - $(".main-header").height() - $(".main-header").height() - 20;
+            } else {
+                offset = - sticky_header_height;
+            }
             $('body,html').animate({
-                scrollTop: $('#page-content').offset().top + (-sticky_header_height)
+                scrollTop: $('#page-content').offset().top + offset
             }, 1000);
             return false;
         });
@@ -115,22 +121,22 @@
             // Animation complete.
             if (animated[array_index] == false) {
                 var str = $('#' + div_id).children('div').children('.title').children('div').children('.tit-div').text();
-                $('#' + div_id).children('div').children('.title').children('div').children('.tit-div').typed({
-                    strings: [str],
-                    typeSpeed: 70,
-                    preStringTyped: function () {
-                        $('#' + div_id).children('div').children('.title').children('div').children('.tit-div').css('visibility', 'visible');
-                    },
-                    onStringTyped: function () {
+                $('#' + div_id).children('div').children('.title').children('div').children('.tit-div').css('visibility', 'visible');
+                $('#' + div_id).children('div').children('.title').children('div').children('.tit-div').lbyl({
+                    content: str,
+                    speed: 20, //time between each new letter being added
+                    //type: 'fade', // 'show' or 'fade'
+                    //fadeSpeed: 1000, // Only relevant when the 'type' is set to 'fade'
+                    finished: function () {
                         if ($('#' + div_id).children('div').children('.title').children('div').children('.subtitle').length > 0) {
                             str = $('#' + div_id).children('div').children('.title').children('div').children('.subtitle').text();
-                            $('#' + div_id).children('div').children('.title').children('div').children('.subtitle').typed({
-                                strings: [str],
-                                typeSpeed: 70,
-                                preStringTyped: function () {
-                                    $('#' + div_id).children('div').children('.title').children('div').children('.subtitle').css('visibility', 'visible');
-                                },
-                                onStringTyped: function () {
+                            $('#' + div_id).children('div').children('.title').children('div').children('.subtitle').css('visibility', 'visible');
+                            $('#' + div_id).children('div').children('.title').children('div').children('.subtitle').lbyl({
+                                content: str,
+                                speed: 10, //time between each new letter being added
+                                //type: 'fade', // 'show' or 'fade'
+                                //fadeSpeed: 500, // Only relevant when the 'type' is set to 'fade'
+                                finished: function () {
                                     $('#' + div_id).children('div').children('.title').children('div').children('div:last-child').children('div').animate({
                                         height: "50"
                                     }, 500, function () { });
@@ -141,8 +147,39 @@
                                 height: "50"
                             }, 500, function () { });
                         }
-                    }
+                    } // Finished Callback
                 });
+
+
+
+                //$('#' + div_id).children('div').children('.title').children('div').children('.tit-div').typed({
+                //    strings: [str],
+                //    typeSpeed: 10,
+                //    preStringTyped: function () {
+                //        $('#' + div_id).children('div').children('.title').children('div').children('.tit-div').css('visibility', 'visible');
+                //    },
+                //    onStringTyped: function () {
+                //        if ($('#' + div_id).children('div').children('.title').children('div').children('.subtitle').length > 0) {
+                //            str = $('#' + div_id).children('div').children('.title').children('div').children('.subtitle').text();
+                //            $('#' + div_id).children('div').children('.title').children('div').children('.subtitle').typed({
+                //                strings: [str],
+                //                typeSpeed: -40,
+                //                preStringTyped: function () {
+                //                    $('#' + div_id).children('div').children('.title').children('div').children('.subtitle').css('visibility', 'visible');
+                //                },
+                //                onStringTyped: function () {
+                //                    $('#' + div_id).children('div').children('.title').children('div').children('div:last-child').children('div').animate({
+                //                        height: "50"
+                //                    }, 500, function () { });
+                //                }
+                //            });
+                //        } else {
+                //            $('#' + div_id).children('div').children('.title').children('div').children('div:last-child').children('div').animate({
+                //                height: "50"
+                //            }, 500, function () { });
+                //        }
+                //    }
+                //});
                 animated[array_index] = true;
             }
         });
@@ -197,19 +234,23 @@
         }
     });
 
-    $(document)
-	.one('focus.textarea', '.autoExpand', function () {
-	    var savedValue = this.value;
-	    this.value = '';
-	    this.baseScrollHeight = this.scrollHeight;
-	    this.value = savedValue;
-	})
-	.on('input.textarea', '.autoExpand', function () {
-	    var minRows = this.getAttribute('data-min-rows') | 0, rows;
-	    this.rows = minRows;
-	    rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 17);
-	    this.rows = minRows + rows;
-	});
+    //$(document)
+	//	.one('focus.textarea', '.autoExpand', function () {
+	//	    var savedValue = this.value;
+	//	    this.value = '';
+	//	    this.baseScrollHeight = this.scrollHeight;
+	//	    this.value = savedValue;
+	//	    $(this).parent().children(".input_label").css("visibility", "hidden");
+	//	})
+	//	.on('input.textarea', '.autoExpand', function () {
+	//	    var minRows = this.getAttribute('data-min-rows') | 0, rows;
+	//	    this.rows = minRows;
+	//	    console.log(this.scrollHeight, this.baseScrollHeight);
+	//	    rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 17);
+	//	    var textareaHeight = this.scrollHeight + 1;
+	//	    $(this).css("height", textareaHeight);
+	//	    this.rows = minRows + rows;
+	//	});
 
 }
 

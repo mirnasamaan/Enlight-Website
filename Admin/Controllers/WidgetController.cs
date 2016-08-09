@@ -79,6 +79,10 @@ namespace Admin.Controllers
             }
             else
             {
+                if (model.Id == 5)
+                {
+                    model.Content = _widRepo.GetWidget(model.Id.Value).WidgetContent;
+                }
                 await _widRepo.EditWidget(model.toModel());
                 data = new Dictionary<string, string>
                     {

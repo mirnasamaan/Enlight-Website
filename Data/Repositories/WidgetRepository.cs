@@ -38,8 +38,14 @@ namespace Data.Repositories
         {
             try
             {
-                _context.Widgets.Attach(widget);
-                _context.Entry(widget).State = EntityState.Modified;
+                Widget widget_db = _context.Widgets.FirstOrDefault(i => i.Id == widget.Id);
+                widget_db.Name = widget.Name;
+                widget_db.Title = widget.Title;
+                widget_db.SubTitle = widget.SubTitle;
+                widget_db.WidgetContent = widget.WidgetContent;
+                widget_db.WidgetOrder = widget.WidgetOrder;
+                //_context.Widgets.Attach(widget);
+                _context.Entry(widget_db).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
                 return widget;
             }
