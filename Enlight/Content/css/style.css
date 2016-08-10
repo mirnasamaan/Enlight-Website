@@ -40,33 +40,35 @@ textarea {
 	position: fixed;
 	z-index: 2;
 }
-/*.navbar > div {
-    padding-top: 20px;
-    padding-bottom: 12px;
-}*/
+.navbar-nav .overlay {
+    position: absolute;
+    top: 0;
+    height: 0;
+    width: 100%;
+    background: #fff;
+    z-index: -1;
+}
 .navbar-nav>li {
     padding-top: 20px;
     padding-bottom: 12px;
     cursor: pointer;
 }
-.navbar-nav>li.active, .navbar-nav>li:hover {
+.navbar-nav>li.active {
     background-color: #fff;
-    border-bottom: 1px solid #fff;
 }
-.navbar-nav>li.active a, .navbar-nav>li:hover a {
+.navbar-nav>li.active a {
     color: #134b6c !important;
 }
 .navbar-default .navbar-toggle {
     margin-top: 20px;
 }
-.nav > li > a {
+.navbar-default .navbar-nav>li>a {
     padding: 5px 2px;
     margin: 10px;
-    color: #fff !important;
+    color: #fff;
 }
 .nav > li > a:hover, .nav > li > a:focus, .nav > li > a.active {
     background-color: transparent;
-    /*border-bottom: 1px solid #fff;*/
 }
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
     background-color: transparent;
@@ -283,6 +285,13 @@ ul.checkout-bar li div {
     border: 1px solid #fff;
     padding: 1px;
     display: inline-block;
+    background-color: transparent;
+}
+form .quote-btn > div {
+    border: 1px solid #fff;
+    padding: 1px;
+    display: inline-block;
+    background-color: #fff;
 }
 .quote-btn > div > div {
     border: 1px solid #fff;
@@ -298,9 +307,24 @@ ul.checkout-bar li div {
     border: none;
     box-shadow: none;
 }
+form .quote-btn button, .quote-btn input {
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 194px;
+    height: 46px;
+    background-color: transparent;
+    color: #134b6c;
+    border: none;
+    box-shadow: none;
+}
 #quoteModal .quote-btn input {
     width: 160px;
-    font-size: 24px;
+    font-size: 16px;
+}
+#quoteModal .quote-btn input:hover {
+    color: #fff;
+    background: #134b6c;
 }
 .quote > div > div > div {
     margin: 80px 0;
@@ -399,11 +423,23 @@ footer p {
 footer p.hidden-md, footer p.hidden-lg {
     text-align: center;
 }
+#quoteModal .modal-dialog {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
 #quoteModal .modal-content {
     background-color: #134b6c;
+    min-height: 100vh;
+}
+#quoteModal form {
+    max-width: 840px;
+    margin: auto;
+    padding-top: 30px;
 }
 #quoteModal .modal-header {
     border: 0;
+    padding: 10px 15px;
 }
 #quoteModal .modal-header button {
     opacity: 1;
@@ -433,11 +469,19 @@ footer p.hidden-md, footer p.hidden-lg {
     width: 100%;
     background-color: #134b6c;
     border: none;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #707070;
     color: #fff;
     font-family: 'Open Sans', sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 300;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+}
+#quoteModal .modal-body .quote-field:focus {
+    border-bottom: 1px solid #fff;
 }
 #quoteModal .modal-body .quote-field::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     color: #fff;
@@ -465,7 +509,7 @@ footer p.hidden-md, footer p.hidden-lg {
 }
 #quoteModal .bselect {
     width: 100%;
-    height: 40px;
+    height: 50px;
 }
 #quoteModal .bselect > span {
     width: 100% !important;
@@ -474,22 +518,22 @@ footer p.hidden-md, footer p.hidden-lg {
     border: 1px solid #fff;
     border-radius: 0;
     height: 100%;
-    padding-top: 8px;
+    padding-top: 14px;
     font-family: 'Open Sans', sans-serif;
-    font-size: 15px;
+    font-size: 12px;
     font-weight: 300;
 }
 #quoteModal .bselect > button {
-    margin-left: -45px;
+    margin-left: -55px;
     border: none;
     border-left: 1px solid #fff;
     background: none;
     background-image: url('/Content/images/down-arrow.png');
     background-repeat: no-repeat;
-    background-position: 11px 12px;
-    background-size: 20px;
-    height: 32px;
-    width: 34px;
+    background-position: 13px 10px;
+    background-size: 28px;
+    height: 40px;
+    width: 38px;
 }
 #quoteModal .bselect > button .caret {
     display: none;

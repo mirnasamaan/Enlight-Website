@@ -59,8 +59,29 @@
         }
     } 
 
-    
+    function changeNavHoverColor(e, code) {
+        $(e).children("a").css("color", code);
+    }
+
     $(document).ready(function () {
+        //---------- Navigation links hover effect ----------//
+        $(".navbar-nav > li").mouseover(function () {
+            setTimeout(changeNavHoverColor($(this), "#134b6c"), 20);
+            $(this).children(".overlay").animate({
+                height: "100%"
+            }, 300, function () { });
+        });
+        $(".navbar-nav > li").mouseleave(function () {
+            $(this).children(".overlay").animate({
+                height: "50%"
+            }, 150, function () {
+                $(this).parent().children("a").css("color", "#fff");
+                $(this).parent().children(".overlay").animate({
+                    height: "0"
+                }, 150, function () { });
+            });
+        });
+
         //--------- Gatting and setting sections height according to screen size ----------//
         $(".banner").css("height", $(window).height());
         var main_banner_height = $(".banner").height();
@@ -149,37 +170,6 @@
                         }
                     } // Finished Callback
                 });
-
-
-
-                //$('#' + div_id).children('div').children('.title').children('div').children('.tit-div').typed({
-                //    strings: [str],
-                //    typeSpeed: 10,
-                //    preStringTyped: function () {
-                //        $('#' + div_id).children('div').children('.title').children('div').children('.tit-div').css('visibility', 'visible');
-                //    },
-                //    onStringTyped: function () {
-                //        if ($('#' + div_id).children('div').children('.title').children('div').children('.subtitle').length > 0) {
-                //            str = $('#' + div_id).children('div').children('.title').children('div').children('.subtitle').text();
-                //            $('#' + div_id).children('div').children('.title').children('div').children('.subtitle').typed({
-                //                strings: [str],
-                //                typeSpeed: -40,
-                //                preStringTyped: function () {
-                //                    $('#' + div_id).children('div').children('.title').children('div').children('.subtitle').css('visibility', 'visible');
-                //                },
-                //                onStringTyped: function () {
-                //                    $('#' + div_id).children('div').children('.title').children('div').children('div:last-child').children('div').animate({
-                //                        height: "50"
-                //                    }, 500, function () { });
-                //                }
-                //            });
-                //        } else {
-                //            $('#' + div_id).children('div').children('.title').children('div').children('div:last-child').children('div').animate({
-                //                height: "50"
-                //            }, 500, function () { });
-                //        }
-                //    }
-                //});
                 animated[array_index] = true;
             }
         });
@@ -233,25 +223,6 @@
             $('.nav > li').removeClass("active");
         }
     });
-
-    //$(document)
-	//	.one('focus.textarea', '.autoExpand', function () {
-	//	    var savedValue = this.value;
-	//	    this.value = '';
-	//	    this.baseScrollHeight = this.scrollHeight;
-	//	    this.value = savedValue;
-	//	    $(this).parent().children(".input_label").css("visibility", "hidden");
-	//	})
-	//	.on('input.textarea', '.autoExpand', function () {
-	//	    var minRows = this.getAttribute('data-min-rows') | 0, rows;
-	//	    this.rows = minRows;
-	//	    console.log(this.scrollHeight, this.baseScrollHeight);
-	//	    rows = Math.ceil((this.scrollHeight - this.baseScrollHeight) / 17);
-	//	    var textareaHeight = this.scrollHeight + 1;
-	//	    $(this).css("height", textareaHeight);
-	//	    this.rows = minRows + rows;
-	//	});
-
 }
 
 homeController.$inject = ['$scope', '$sce', '$routeParams', 'homeFactory', 'contactFactory'];

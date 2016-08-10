@@ -79,7 +79,7 @@ namespace Admin.Controllers
             }
             else
             {
-                if (model.Id == 5)
+                if (model.Id == 5 || model.Id == 7)
                 {
                     model.Content = _widRepo.GetWidget(model.Id.Value).WidgetContent;
                 }
