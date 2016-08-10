@@ -21,7 +21,7 @@
 <div class="modal fade" id="quoteModal" tabindex="-1" role="dialog">
     <div class="modal-dialog container modal-lg" role="document">
         <div class="modal-content">
-            <form>
+            <form ng-submit="submit(submitform)" name="submitform" enctype="multipart/form-data" ng-validate="validationOptionsSubmit">
                 <div class="modal-header row">
                     <div class="col-xs-12">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -33,34 +33,34 @@
                 </div>
                 <div class="modal-body row">
                     <div class="col-xs-12 col-md-4">
-                        <input type="text" id="name" class="quote-field" placeholder="NAME" />
+                        <input ng-model="addQuoteForm.name" type="text" id="name" name="name" class="quote-field" placeholder="NAME" />
                     </div>
                     <div class="col-xs-12 col-md-4">
-                        <input type="email" id="email" class="quote-field" placeholder="EMAIL" />
+                        <input ng-model="addQuoteForm.email" type="email" id="email" name="email" class="quote-field" placeholder="EMAIL" />
                     </div>
                     <div class="col-xs-12 col-md-4">
-                        <input type="text" id="phone" class="quote-field" placeholder="PHONE" />
+                        <input ng-model="addQuoteForm.phone" type="text" id="phone" name="phone" class="quote-field" placeholder="PHONE" />
                     </div>
                     <div class="clear"></div>
                     <div class="col-xs-12 col-md-4">
-                        <select>
+                        <select ng-model="addQuoteForm.category" id="category" name="category">
                             <option>CHOOSE A CATEGORY</option>
-                            <option>Option 1</option>
-                            <option>Option 2</option>
-                            <option>Option 3</option>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
                         </select>
                     </div>
                     <div class="col-xs-12 col-md-4">
-                        <select>
+                        <select ng-model="addQuoteForm.type" id="type" name="type">
                             <option>CHOOSE A TYPE</option>
-                            <option>Option 1</option>
-                            <option>Option 2</option>
-                            <option>Option 3</option>
+                            <option value="1">Option 4</option>
+                            <option value="2">Option 5</option>
+                            <option value="3">Option 6</option>
                         </select>
                     </div>
                     <div class="clear"></div>
                     <div class="col-xs-12">
-                        <textarea id="msg" class="quote-field autoExpand" rows='1' data-min-rows='1' placeholder="MESSAGE"></textarea>
+                        <textarea id="message" name="message" ng-model="addQuoteForm.message" class="quote-field autoExpand" rows='1' data-min-rows='1' placeholder="MESSAGE"></textarea>
                     </div>
                     <div class="clear"></div>
                     <div>
@@ -68,11 +68,11 @@
                             <p>How did you know about us?</p>
                         </div>
                         <div class="col-xs-12 col-md-4">
-                            <select>
+                            <select ng-model="addQuoteForm.recommend" name="recommend" id="recommend">
                                 <option>RECOMMENDATION</option>
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
+                                <option value="1">Option 7</option>
+                                <option value="2">Option 8</option>
+                                <option value="3">Option 9</option>
                             </select>
                         </div>
                         <div class="clear"></div>
@@ -80,6 +80,7 @@
                     <div class="clear"></div>
                     <div class="col-xs-12">
                         <p>*Please note that the quote sent is an estimate and is subject to change based on the features of the product</p>
+                        <p>{{err_msg}}</p>
                     </div>
                     <div class="clear"></div>
                     <div class="col-xs-12">

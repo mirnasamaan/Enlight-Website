@@ -181,6 +181,7 @@
     <Content Include="scripts\controllers\homeController.js" />
     <Content Include="scripts\factories\contactFactory.js" />
     <Content Include="scripts\factories\homeFactory.js" />
+    <Content Include="scripts\factories\quoteFactory.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
     <Content Include="scripts\jquery.animateNumber.min.js" />
@@ -199,6 +200,7 @@
     </Compile>
     <Compile Include="Models\ClientsVM.cs" />
     <Compile Include="Models\ContactVM.cs" />
+    <Compile Include="Models\QuoteVM.cs" />
     <Compile Include="Models\WidgetVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
