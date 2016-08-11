@@ -2,7 +2,6 @@
 
     userDetailsFactory.getUser($routeParams.id)
       .then(function (data) {
-          console.log(data);
           $scope.user = data;
       });
 
@@ -24,7 +23,7 @@
 
     $scope.edit = function (form) {
         if (form.validate()) {
-            var result = userEditFactory($scope.user.Id, $scope.user.Email, $scope.user.Password, $scope.user.UserToken, $scope.user.ConfirmationDate, $scope.user.LastLoginDate);
+            var result = userEditFactory($scope.user.ID, $scope.user.Email, $scope.user.Password, $scope.user.UserToken, $scope.user.CreationDate, $scope.user.LastLoginDate);
         }
     }
 }

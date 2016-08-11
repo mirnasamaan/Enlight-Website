@@ -11,6 +11,7 @@ using System.Web.Script.Serialization;
 
 namespace Admin.Controllers
 {
+    [Authorize]
     public class WidgetController : Controller
     {
         private WidgetRepository _widRepo;

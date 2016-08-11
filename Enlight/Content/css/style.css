@@ -96,8 +96,8 @@ textarea {
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-top: -40px;
-    margin-left: -245px;
+    margin-top: -100px;
+    margin-left: -325px;
     text-align: center;
 }
 .bounce {
@@ -118,15 +118,20 @@ textarea {
   100%     {bottom:10px;}
 }
 .banner > div:first-child > div:first-child {
-    font-size: 36px;
+    font-size: 72px;
     font-weight: bold;
     color: #fff;
     text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 60px;
+    padding: 20px 0;
 }
 .banner > div:first-child > div:last-child {
     font-size: 20px;
     color: #fff;
     font-family: 'Raleway', sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
 }
 .banner img {
     color: #fff;
@@ -267,12 +272,14 @@ ul.checkout-bar li div {
     background-size: cover;
 }
 .quote .text {
-    font-family: 'Open Sana', sans-serif;
-    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
     font-size: 20px;
     color: #fff;
     text-align: center;
     padding: 20px 0;
+    text-shadow: none;
+    font-weight: 100;
 }
 .quote-btn {
     text-align: center;
@@ -282,7 +289,6 @@ ul.checkout-bar li div {
     padding-top: 0;
 }
 .quote-btn > div {
-    border: 1px solid #fff;
     padding: 1px;
     display: inline-block;
     background-color: transparent;
@@ -302,10 +308,13 @@ form .quote-btn > div {
     text-transform: uppercase;
     width: 194px;
     height: 46px;
-    background-color: transparent;
-    color: #fff;
+    color: #134b6c;
     border: none;
-    box-shadow: none;
+    box-shadow: 0 4px #134b6c;
+    background: -webkit-linear-gradient(#fff, #e4e1e1);
+    background: -o-linear-gradient(#fff, #e4e1e1);
+    background: -moz-linear-gradient(#fff, #e4e1e1);
+    background: linear-gradient(#fff, #e4e1e1);
 }
 form .quote-btn button, .quote-btn input {
     font-size: 16px;
@@ -320,7 +329,11 @@ form .quote-btn button, .quote-btn input {
 }
 #quoteModal .quote-btn input {
     width: 160px;
-    font-size: 16px;
+    font-size: 16px;    
+    margin: 0;
+    box-shadow: none;
+    border: none;
+    transition: all 0.2s ease-in-out;
 }
 #quoteModal .quote-btn input:hover {
     color: #fff;
@@ -330,20 +343,22 @@ form .quote-btn button, .quote-btn input {
     margin: 80px 0;
 }
 .contact form input, .contact form textarea {
+    margin: 13px 0;
+}
+.contact form input, .contact form textarea, #quoteModal form input.quote-field, #quoteModal form textarea.quote-field {
     width: 100%;
     box-shadow: none;
     border: none;
     border-bottom: 1px solid #d7d7d7;
     height: 51px;
     padding: 15px;
-    margin: 13px 0;
     color: #134b6c;
     transition: all 0.2s linear;
     -moz-transition: all 0.2s linear;
     -webkit-transition: all 0.2s linear;
     -o-transition: all 0.2s linear;
 }
-.contact form .input_label {
+.contact form .input_label, #quoteModal form .input_label {
     background-color: #134b6c;
     height: 2px;
     left: 15px;
@@ -356,11 +371,20 @@ form .quote-btn button, .quote-btn input {
     -ms-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
 }
+#quoteModal form .input_label {
+    top: 49px;
+}
+#quoteModal form .input_label {
+    background-color: #fff;
+}
 input:focus + .input_label, textarea:focus + .input_label {
-    width: 92%;
+    width: 92% !important;
 }
 .contact form input:focus, .contact form textarea:focus {
     border-bottom: 2px solid #134b6c;
+}
+#quoteModal form input:focus, #quoteModal form textarea:focus {
+    border-bottom: 2px solid #fff !important;
 }
 .contact form input::-webkit-input-placeholder, .contact form textarea::-webkit-input-placeholder {
    color: #134b6c !important;
@@ -398,15 +422,14 @@ input:focus + .input_label, textarea:focus + .input_label {
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
     text-transform: uppercase;
-    /*width: 400px;*/
     margin: 0;
-    background: #176b9d; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(left, #134b6c, #176b9d, #176b9d , #176b9d, #176b9d, #176b9d, #134b6c); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(right, #134b6c, #176b9d, #176b9d, #176b9d, #176b9d, #176b9d, #134b6c); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(right, #134b6c, #176b9d, #176b9d, #176b9d, #176b9d, #176b9d, #134b6c); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to right, #134b6c, #176b9d, #176b9d, #176b9d, #176b9d, #176b9d, #134b6c); /* Standard syntax (must be last) */
+    background: #176b9d;
+    background: -webkit-linear-gradient(#176b9d, #134b6c);
+    background: -o-linear-gradient(#176b9d, #134b6c);
+    background: -moz-linear-gradient(#176b9d, #134b6c);
+    background: linear-gradient(#176b9d, #134b6c);
     border: 1px solid #134b6c;
-    text-shadow: 3px 3px 5px #555;
+    text-shadow: 6px 6px 50px #134b6c;
     box-shadow: inset 0 0 10px #555;
 }
 footer {
@@ -476,13 +499,13 @@ footer p.hidden-md, footer p.hidden-lg {
     font-weight: 300;
     padding-left: 10px;
     padding-bottom: 10px;
-    transition: all 0.5s ease-in-out;
+    /*transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
-    -webkit-transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;*/
 }
-#quoteModal .modal-body .quote-field:focus {
+/*#quoteModal .modal-body .quote-field:focus {
     border-bottom: 1px solid #fff;
-}
+}*/
 #quoteModal .modal-body .quote-field::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     color: #fff;
     font-family: 'Open Sans', sans-serif;
@@ -507,11 +530,16 @@ footer p.hidden-md, footer p.hidden-lg {
     font-size: 15px;
     font-weight: 300;
 }
+#quoteModal .modal-body .quote-field:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #134b6c inset;
+    -webkit-text-fill-color: white !important;
+}
 #quoteModal .bselect {
     width: 100%;
     height: 50px;
 }
 #quoteModal .bselect > span {
+    text-shadow: none;
     width: 100% !important;
     color: #fff;
     background: none;
@@ -539,7 +567,7 @@ footer p.hidden-md, footer p.hidden-lg {
     display: none;
 }
 #quoteModal .modal-body > div {
-    padding-bottom: 30px;
+    padding-bottom: 20px;
 }
 #quoteModal p {
     font-family: 'Open Sans', sans-serif;
@@ -554,6 +582,9 @@ footer p.hidden-md, footer p.hidden-lg {
 }
 .navbar-default .navbar-toggle .icon-bar {
     background-color: #fff;
+}
+.clients .flex-direction-nav .flex-prev {
+    z-index: 1;
 }
 
 @media(max-width: 1199px) {
@@ -589,7 +620,7 @@ footer p.hidden-md, footer p.hidden-lg {
 }
 @media(max-width: 992px) {
     .services .item .data {
-        padding: 20px 0;
+        padding: 5px 0;
     }
     .services .item .data > div:first-child {
         font-size: 20px;
@@ -607,6 +638,14 @@ footer p.hidden-md, footer p.hidden-lg {
     .stats .stat-item > div:last-child {
         font-weight: bold;
         font-size: 17px;
+    }
+    .services .item {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .logo {
+        max-width: 150px;
+        margin-top: 5px;
     }
 }
 @media (min-width: 768px) and (max-width: 992px) {
@@ -701,7 +740,17 @@ footer p.hidden-md, footer p.hidden-lg {
 }
 @media(max-width: 600px) {
     .services .item .data {
-        padding: 20px;
+        padding: 5px 20px;
+    }
+}
+@media(max-width: 590px) {
+    .banner > div:first-child {
+        margin-left: -300px;
+    }
+}
+@media(max-width: 550px) {
+    .banner > div:first-child > div:last-child {
+        max-width: 500px;
     }
 }
 @media(max-width: 500px) {
@@ -710,5 +759,11 @@ footer p.hidden-md, footer p.hidden-lg {
     }
     .services .item .data > div:last-child {
         font-size: 13px;
+    }
+    .banner > div:first-child {
+        margin-left: -200px;
+    }
+    .banner > div:first-child > div:last-child {
+        max-width: 300px;
     }
 }

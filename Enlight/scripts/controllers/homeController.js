@@ -151,25 +151,48 @@
     }
 
     $(document).ready(function () {
-        //---------- Navigation links hover effect ----------//
-        $(".navbar-nav > li").mouseover(function () {
-            setTimeout(changeNavHoverColor($(this), "#134b6c"), 20);
-            $(this).children(".overlay").animate({
-                height: "100%"
-            }, 300, function () { });
-        });
-        $(".navbar-nav > li").mouseleave(function () {
-            $(this).children(".overlay").animate({
-                height: "50%"
-            }, 150, function () {
-                $(this).parent().children("a").css("color", "#fff");
-                $(this).parent().children(".overlay").animate({
-                    height: "0"
-                }, 150, function () { });
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            // some code..
+        } else {
+            //---------- Navigation links hover effect ----------//
+            $(".navbar-nav > li").mouseover(function () {
+                setTimeout(changeNavHoverColor($(this), "#134b6c"), 20);
+                $(this).children(".overlay").animate({
+                    height: "100%"
+                }, 300, function () { });
             });
-        });
+            $(".navbar-nav > li").mouseleave(function () {
+                $(this).children(".overlay").animate({
+                    height: "50%"
+                }, 150, function () {
+                    $(this).parent().children("a").css("color", "#fff");
+                    $(this).parent().children(".overlay").animate({
+                        height: "0"
+                    }, 150, function () { });
+                });
+            });
+        }
+        
+        //---------- Change type dropdown according to category dropdown ----------//
+        $("#category").change(function () {
+            $("#type").bselect("destroy");
+            if ($(this).val() == "1") {
+                $("#type").html("");
+                $("#type").append('<option value="1">DESIGN</option><option value="2">FRONTEND DEVELOPMENT</option><option value="3">BACKEND DEVELOPMENT</option><option value="4">ALL OF THE ABOVE</option>');
+                $('#type').bselect();
+            } else if ($(this).val() == "2") {
+                $("#type").html("");
+                $("#type").append('<option value="1">DESIGN</option><option value="2">IOS DEVELOPMENT</option><option value="3">ANDROID DEVELOPMENT</option><option value="4">ALL OF THE ABOVE</option>');
+                $('#type').bselect();
+            } else {
+                $("#type").html("");
+                $("#type").append('<option>CHOOSE A TYPE</option>');
+                $('#type').bselect();
+            }
+            initializeSelectEvent();
+        })
 
-        //--------- Gatting and setting sections height according to screen size ----------//
+        //---------- Getting and setting sections height according to screen size ----------//
         $(".banner").css("height", $(window).height());
         var main_banner_height = $(".banner").height();
         sticky_header_height = $(".sticky").height();
@@ -221,22 +244,22 @@
         });
     });
 
-    $('.bselect a').click(function (e) {
-        e.preventDefault();
-        console.log(e);
-        var x = ($(event.target).text());
-        if (x == "Option 1" || x == "Option 2" || x == "Option 3")
-        {
-            $scope.category = x;
-            //$("#category").val(x);
-        }
-        if (x == "Option 4" || x == "Option 5" || x == "Option 6") {
-            $scope.type = x;
-        }
-        if (x == "Option 7" || x == "Option 8" || x == "Option 9") {
-            $scope.recommend = x;
-        }
-    });
+    function initializeSelectEvent() {
+        $('.bselect a').click(function (e) {
+            e.preventDefault();
+            var x = ($(event.target).text());
+            if (x == "WEBSITE DEVELOPMENT" || x == "MOBILE DEVELOPMENT") {
+                $scope.category = x;
+                //$("#category").val(x);
+            }
+            if (x == "DESIGN" || x == "FRONTEND DEVELOPMENT" || x == "BACKEND DEVELOPMENT" || x == "ALL OF THE ABOVE" || x == "IOS DEVELOPMENT" || x == "ANDROID DEVELOPMENT") {
+                $scope.type = x;
+            }
+            if (x == "RECOMMENDATION" || x == "LINKEDIN" || x == "FACEBOOK" || x == "GOOGLE SEARCH" || x == "PREVIOUS WORK") {
+                $scope.recommend = x;
+            }
+        });
+    };
 
     //---------- Title text animation----------//
     var animated = [false, false, false, false, false];

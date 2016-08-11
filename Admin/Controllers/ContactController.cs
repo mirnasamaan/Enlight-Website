@@ -13,6 +13,7 @@ using System.Web.Script.Serialization;
 
 namespace Admin.Controllers
 {
+    [Authorize]
     public class ContactController : Controller
     {
         private ContactRepository _contactRepo;

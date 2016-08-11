@@ -15,6 +15,7 @@ using System.Drawing;
 
 namespace Admin.Controllers
 {
+    [Authorize]
     public class ClientController : Controller
     {
         private ClientRepository _clientRepo;

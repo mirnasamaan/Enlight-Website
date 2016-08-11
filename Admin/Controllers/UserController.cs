@@ -13,6 +13,7 @@ using System.Web.Script.Serialization;
 
 namespace Admin.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         private UserRepository _userRepo;
@@ -108,7 +109,7 @@ namespace Admin.Controllers
             else
             {
                 User user = _userRepo.GetUserByEmail(model.Email);
-                if (user.Password != model.Password)
+                if (user.Password != GetMd5Hash(model.Password))
                 {
                     model.Password = GetMd5Hash(model.Password);
                     await _userRepo.EditUser(model.ToModel());
@@ -208,7 +209,7 @@ namespace Admin.Controllers
                 {
                     lastlogin = user.LastLoginDate.Value.ToShortDateString();
                 }
-                UserDataItem data = new UserDataItem() { Email = user.Email, CreationDate = user.CreationDate.ToShortDateString(), LastLoginDate = lastlogin, Password = user.Password, UserToken = user.UserToken };
+                UserDataItem data = new UserDataItem() { ID = Id, Email = user.Email, CreationDate = user.CreationDate.ToShortDateString(), LastLoginDate = lastlogin, Password = user.Password, UserToken = user.UserToken };
                 return Json(data, JsonRequestBehavior.AllowGet);
             }
             else

@@ -161,8 +161,6 @@
     <Content Include="Content\images\web-design.png" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="scripts\ai.0.15.0-build58334.js" />
-    <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="scripts\angular-bind-html-compile.js" />
     <Content Include="scripts\angular-sanitize.min.js" />
     <Content Include="scripts\angular-validate.js" />
@@ -176,6 +174,7 @@
     <Content Include="Content\fonts\flexslider-icon.eot" />
     <Content Include="Content\fonts\flexslider-icon.ttf" />
     <Content Include="Content\fonts\flexslider-icon.woff" />
+    <None Include="Properties\PublishProfiles\enlight_pub.pubxml" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\bselect.min.js" />
     <Content Include="scripts\controllers\homeController.js" />

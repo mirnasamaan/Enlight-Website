@@ -4,8 +4,8 @@
 
 <div class="banner">
     <div>
-        <div>We are Enlight Agency</div>
-        <div>We specialize in web design & development</div>
+        <div>We are Enlight</div>
+        <div>A software company located in<br />Cairo, Egypt specializing in web design & development</div>
     </div>
     <div class="down-arrow bounce">
         <img src="~/Content/images/down-arrow.png" />
@@ -34,33 +34,33 @@
                 <div class="modal-body row">
                     <div class="col-xs-12 col-md-4">
                         <input ng-model="addQuoteForm.name" type="text" id="name" name="name" class="quote-field" placeholder="NAME" />
+                        <label class="input_label"></label>
                     </div>
                     <div class="col-xs-12 col-md-4">
                         <input ng-model="addQuoteForm.email" type="email" id="email" name="email" class="quote-field" placeholder="EMAIL" />
+                        <label class="input_label"></label>
                     </div>
                     <div class="col-xs-12 col-md-4">
                         <input ng-model="addQuoteForm.phone" type="text" id="phone" name="phone" class="quote-field" placeholder="PHONE" />
+                        <label class="input_label"></label>
                     </div>
                     <div class="clear"></div>
                     <div class="col-xs-12 col-md-4">
                         <select ng-model="addQuoteForm.category" id="category" name="category">
                             <option>CHOOSE A CATEGORY</option>
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
+                            <option value="1">WEBSITE DEVELOPMENT</option>
+                            <option value="2">MOBILE DEVELOPMENT</option>
                         </select>
                     </div>
                     <div class="col-xs-12 col-md-4">
                         <select ng-model="addQuoteForm.type" id="type" name="type">
                             <option>CHOOSE A TYPE</option>
-                            <option value="1">Option 4</option>
-                            <option value="2">Option 5</option>
-                            <option value="3">Option 6</option>
                         </select>
                     </div>
                     <div class="clear"></div>
                     <div class="col-xs-12">
                         <textarea id="message" name="message" ng-model="addQuoteForm.message" class="quote-field autoExpand" rows='1' data-min-rows='1' placeholder="MESSAGE"></textarea>
+                        <label class="input_label"></label>
                     </div>
                     <div class="clear"></div>
                     <div>
@@ -69,10 +69,12 @@
                         </div>
                         <div class="col-xs-12 col-md-4">
                             <select ng-model="addQuoteForm.recommend" name="recommend" id="recommend">
-                                <option>RECOMMENDATION</option>
-                                <option value="1">Option 7</option>
-                                <option value="2">Option 8</option>
-                                <option value="3">Option 9</option>
+                                <option>SELECT AN OPTION</option>
+                                <option value="1">RECOMMENDATION</option>
+                                <option value="2">LINKEDIN</option>
+                                <option value="3">FACEBOOK</option>
+                                <option value="4">GOOGLE SEARCH</option>
+                                <option value="5">PREVIOUS WORK</option>
                             </select>
                         </div>
                         <div class="clear"></div>
@@ -86,9 +88,7 @@
                     <div class="col-xs-12">
                         <div class="quote-btn">
                             <div>
-                                <div>
-                                    <input type="submit" value="Send" />
-                                </div>
+                                <input type="submit" value="Send" />
                             </div>
                         </div>
                     </div>

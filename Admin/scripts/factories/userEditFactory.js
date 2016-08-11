@@ -1,4 +1,4 @@
-﻿var userEditFactory = function ($http, $q) {
+﻿var userEditFactory = function ($http, $q, $location) {
     
     return function (id, email, password, token, creationdate, lastlogindate) {
 
@@ -30,4 +30,4 @@
     }
 }
 
-userEditFactory.$inject = ['$http', '$q'];
+userEditFactory.$inject = ['$http', '$q', '$location'];

@@ -45,7 +45,7 @@ namespace Admin.Controllers
                 return View(model);
             }
             var response = Request["g-recaptcha-response"];
-            const string secret = "6Lc1gSATAAAAAORh5OINsJPrtzcIpJ4oOxdO-nTe";
+            const string secret = "6LfGWScTAAAAAH4rh8Pq1nah77sQ9Uoo0tqi8u60";
             var client = new WebClient();
             var reply =
                 client.DownloadString(
@@ -90,20 +90,19 @@ namespace Admin.Controllers
                 User user = _ur.GetUserByEmail(model.Email);
                 user.LastLoginDate = DateTime.UtcNow.ToLocalTime();
                 _ur.UpdateLastLogin(user);
-                return RedirectToAction("Index", "Dashboard");
+                return RedirectToAction("Index", "Home");
             }
         }
 
-        //[Authorize(Roles = "Admin, B2B, B2C")]
-        //public ActionResult Logout()
-        //{
-        //    //Session["Balance"] = 0;
-        //    var authCookie = HttpContext.Request.Cookies[FormsAuthentication.FormsCookieName];
-        //    authCookie.Expires = DateTime.Now.AddDays(-1);
-        //    authCookie.Value = null;
-        //    authCookie = null;
-        //    FormsAuthentication.SignOut();
-        //    return RedirectToAction("Login", "Account");
-        //}
+        [Authorize]
+        public ActionResult Logout()
+        {
+            var authCookie = HttpContext.Request.Cookies[FormsAuthentication.FormsCookieName];
+            authCookie.Expires = DateTime.Now.AddDays(-1);
+            authCookie.Value = null;
+            authCookie = null;
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

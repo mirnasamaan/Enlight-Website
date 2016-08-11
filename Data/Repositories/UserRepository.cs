@@ -58,8 +58,9 @@ namespace Data.Repositories
 
         public async Task<User> EditUser(User user)
         {
-            _ee.Users.Attach(user);
-            _ee.Entry(user).State = EntityState.Modified;
+            User user_db = _ee.Users.FirstOrDefault(i => i.Email == user.Email);
+            user_db.Password = user.Password;
+            _ee.Entry(user_db).State = EntityState.Modified;
             await _ee.SaveChangesAsync();
             return user;
         }
@@ -69,8 +70,8 @@ namespace Data.Repositories
             IQueryable<User> data = _ee.Users;
             recordsTotal = data.Count();
             if (!string.IsNullOrEmpty(search))
-                data = data.Where(i => i.ID.ToString().Contains(search) || i.Email.ToLower().Contains(search.ToLower()) || i.CreationDate.Equals(search)
-                || i.LastLoginDate.Equals(search));
+                data = data.Where(i => i.ID.ToString().Contains(search) || i.Email.ToLower().Contains(search.ToLower()) || i.CreationDate.ToString().Contains(search)
+                || i.LastLoginDate.ToString().Contains(search));
             data = data.OrderByDescending(i => i.ID);
             if (sortColumn == 0)
             {
