@@ -135,44 +135,12 @@
         }
     }
 
-    //$scope.add = function (form) {
-    //    if (form.validate()) {
-    //        $q.all([
-    //        contactFactory($scope.addWidgetForm.name, $scope.addWidgetForm.email, $scope.addWidgetForm.number, $scope.addWidgetForm.message)
-    //        ]).then(function (data) {
-    //            alert(data);
-    //        });
-    //    }
-    //}
-    
 
     function changeNavHoverColor(e, code) {
         $(e).children("a").css("color", code);
     }
 
     $(document).ready(function () {
-        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            // some code..
-        } else {
-            //---------- Navigation links hover effect ----------//
-            $(".navbar-nav > li").mouseover(function () {
-                setTimeout(changeNavHoverColor($(this), "#134b6c"), 20);
-                $(this).children(".overlay").animate({
-                    height: "100%"
-                }, 300, function () { });
-            });
-            $(".navbar-nav > li").mouseleave(function () {
-                $(this).children(".overlay").animate({
-                    height: "50%"
-                }, 150, function () {
-                    $(this).parent().children("a").css("color", "#fff");
-                    $(this).parent().children(".overlay").animate({
-                        height: "0"
-                    }, 150, function () { });
-                });
-            });
-        }
-        
         //---------- Change type dropdown according to category dropdown ----------//
         $("#category").change(function () {
             $("#type").bselect("destroy");
@@ -200,6 +168,7 @@
 
         //---------- change top banner height when resizing the window ----------//
         $(window).resize(function () {
+            $("#stream .content > div").css("width", $(window).width() + "px");
             $(".banner").css("height", $(window).height());
             main_banner_height = $(".banner").height();
             sticky_header_height = $(".sticky").height();
@@ -307,10 +276,10 @@
         //---------- Counter numbers animation ---------->
         if ($('.stats').visible() && counted == false) {
             counted = true;
-            var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',')
-            $(".counter span").each(function (index) {
+            var comma_separator_number_step = $.animateNumber.numberStepFactories.separator(',');
+            $(".counter .val").each(function (index) {
                 $(this).animateNumber({
-                    number: $(this).text(),
+                    number: $(this).parent().children("input").val(),
                     numberStep: comma_separator_number_step
                 });
             }, 30000);
@@ -318,6 +287,11 @@
 
         //---------- Add active class when scrolling over divs ----------//
         if ($('#contact').visible(true)) {
+            //if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            //    $("#contact form input").focus(function () {
+            //        $(window).scrollTop($(this).offset().top - $(".sticky").outerHeight());
+            //    });
+            //}
             $('.nav > li').removeClass("active");
             $('#contact-link').addClass("active");
             if (animated[4] == false) {
@@ -339,7 +313,13 @@
             $('.nav > li').removeClass("active");
             $('#stream-link').addClass("active");
             if (animated[1] == false) {
-                animateTitle('stream', 1)
+                $.when(animateTitle('stream', 1)).done(function () {
+                    //---------- Progressbar animation ----------//
+                    $("#stream .content > div").css("width", $(window).width() + "px");
+                    $("#stream .content").animate({
+                        "width": "100%"
+                    }, 5000);
+                });
             }
         } else if ($('#services').visible(true)) {
             $('.nav > li').removeClass("active");

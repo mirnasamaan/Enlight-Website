@@ -41,6 +41,12 @@ AngularCustomJS.controller('mainCtrl', [ '$scope',function ($scope) {
         }, 1000);
         $('.nav > li').removeClass("active");
         $("#home-link").addClass("active");
+        if ($(".sticky .navbar-collapse").hasClass("in")) {
+            $("#sticky-btn").trigger("click");
+        }
+        if ($(".main-header .navbar-collapse").hasClass("in")) {
+            $("#main-btn").trigger("click");
+        }
         return false;
     }
 
@@ -50,6 +56,12 @@ AngularCustomJS.controller('mainCtrl', [ '$scope',function ($scope) {
         }, 1000);
         $('.nav > li').removeClass("active");
         $("#services-link").addClass("active");
+        if ($(".sticky .navbar-collapse").hasClass("in")) {
+            $("#sticky-btn").trigger("click");
+        }
+        if ($(".main-header .navbar-collapse").hasClass("in")) {
+            $("#main-btn").trigger("click");
+        }
         return false;
     }
 
@@ -59,6 +71,12 @@ AngularCustomJS.controller('mainCtrl', [ '$scope',function ($scope) {
         }, 1000);
         $('.nav > li').removeClass("active");
         $("#stream-link").addClass("active");
+        if ($(".sticky .navbar-collapse").hasClass("in")) {
+            $("#sticky-btn").trigger("click");
+        }
+        if ($(".main-header .navbar-collapse").hasClass("in")) {
+            $("#main-btn").trigger("click");
+        }
         return false;
     }
 
@@ -68,6 +86,12 @@ AngularCustomJS.controller('mainCtrl', [ '$scope',function ($scope) {
         }, 1000);
         $('.nav > li').removeClass("active");
         $("#clients-link").addClass("active");
+        if ($(".sticky .navbar-collapse").hasClass("in")) {
+            $("#sticky-btn").trigger("click");
+        }
+        if ($(".main-header .navbar-collapse").hasClass("in")) {
+            $("#main-btn").trigger("click");
+        }
         return false;
     }
 
@@ -77,6 +101,12 @@ AngularCustomJS.controller('mainCtrl', [ '$scope',function ($scope) {
         }, 1000);
         $('.nav > li').removeClass("active");
         $("#team-link").addClass("active");
+        if ($(".sticky .navbar-collapse").hasClass("in")) {
+            $("#sticky-btn").trigger("click");
+        }
+        if ($(".main-header .navbar-collapse").hasClass("in")) {
+            $("#main-btn").trigger("click");
+        }
         return false;
     }
 
@@ -86,6 +116,12 @@ AngularCustomJS.controller('mainCtrl', [ '$scope',function ($scope) {
         }, 1000);
         $('.nav > li').removeClass("active");
         $("#contact-link").addClass("active");
+        if ($(".sticky .navbar-collapse").hasClass("in")) {
+            $("#sticky-btn").trigger("click");
+        }
+        if ($(".main-header .navbar-collapse").hasClass("in")) {
+            $("#main-btn").trigger("click");
+        }
         return false;
     }
 
